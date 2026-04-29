@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — Exam Results Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .card { background-color: #1e293b; border: 1px solid #334155; }
+        .pass { color: #34d399; }
+        .fail { color: #f87171; }
+        .alert-red { background-color: #450a0a; border-left: 4px solid #ef4444; }
+        .alert-orange { background-color: #431407; border-left: 4px solid #f97316; }
+        .alert-yellow { background-color: #422006; border-left: 4px solid #eab308; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-2xl font-bold mb-1 text-blue-400">📊 Exam Results Dashboard</h1>
+        <p class="text-gray-400 text-sm mb-6">RestoSuite Training System — Admin View</p>
+
+        <!-- Summary Stats -->
+        {% set total_exams = results | length %}
+        {% set passed_count = results | selectattr('passed') | list | length %}
+        <div class="grid grid-cols-4 gap-4 mb-6">
+            <div class="card rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-blue-400">{{ total_exams }}</div>
+                <div class="text-sm text-gray-400 mt-1">Total Exams</div>
+            </div>
+            <div class="card rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-green-400">{{ passed_count }}</div>
+                <div class="text-sm text-gray-400 mt-1">Passed</div>
+            </div>
+            <div class="card rounded-xl p-4 text-center">
+                <div class="text-3xl font-bold text-red-400">{{ total_exams - passed_count }}</div>
+                <div class="text-sm text-gray-400 mt-1">Failed</div>
+            </div>
+            <div class="card rounded-xl p-4 text-center">
+                {% set alert_count = candidate_alerts.values() | selectattr('alert') | list | length %}
+                <div class="text-3xl font-bold text-yellow-400">{{ alert_count }}</div>
+                <div class="text-sm text-gray-400 mt-1">Alerts</div>
+            </div>
+        </div>
+
+        <!-- ⚠️ HR Alerts Section — Only shown when alerts exist -->
+        {% set alerts_list = candidate_alerts.items() | selectattr('1.alert') | list %}
+        {% if alerts_list %}
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 text-yellow-400">⚠️ HR Action Required</h2>
+            {% for name, info in candidate_alerts.items() %}
+            {% if info.alert %}
+            {% set a = info.alert %}
+            <div class="rounded-xl p-4 mb-3 alert-{{ a.color }}">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xl">{{ a.icon }}</span>
+                            <span class="font-bold text-white">{{ name }}</span>
+                            <span class="px-2 py-0.5 rounded text-xs font-bold
+                                {% if a.level == 'termination' %}bg-red-700 text-red-200
+                                {% elif a.level == 'written_warning' %}bg-orange-700 text-orange-200
+                                {% else %}bg-yellow-700 text-yellow-200{% endif %}">
+                                {{ a.label_en }} / {{ a.label_zh }}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-300">{{ a.msg_en }}</p>
+                        <p class="text-sm text-gray-400">{{ a.msg_zh }}</p>
+                    </div>
+                    <div class="text-right text-xs text-gray-400 ml-4 flex-shrink-0">
+                        <div>Consecutive failed months:</div>
+                        <div class="text-2xl font-bold
+                            {% if info.consecutive_failed_months >= 3 %}text-red-400
+                            {% elif info.consecutive_failed_months == 2 %}text-orange-400
+                            {% else %}text-yellow-400{% endif %}">
+                            {{ info.consecutive_failed_months }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Monthly history -->
+                {% if info.monthly_stats %}
+                <div class="mt-3 flex gap-2 flex-wrap">
+                    {% for m in info.monthly_stats %}
+                    <span class="px-2 py-1 rounded text-xs
+                        {% if m.all_failed %}bg-red-900 text-red-300{% else %}bg-green-900 text-green-300{% endif %}">
+                        {{ m.year_month }}: {{ '✗ Failed' if m.all_failed else '✓ Passed' }}
+                        ({{ m.attempts }} attempt{{ 's' if m.attempts > 1 else '' }}, best {{ m.best_score }}%)
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Candidate Summary (attempts this month) -->
+        {% if candidate_alerts %}
+        <div class="card rounded-xl p-4 mb-6">
+            <h2 class="text-base font-bold mb-3 text-gray-300">👥 This Month's Attempt Usage</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {% for name, info in candidate_alerts.items() %}
+                <div class="bg-slate-800 rounded-lg p-3">
+                    <div class="font-semibold text-sm mb-1">{{ name }}</div>
+                    <div class="text-xs text-gray-400">
+                        Used: <span class="font-bold
+                            {% if info.attempts_this_month >= monthly_limit %}text-red-400
+                            {% elif info.attempts_this_month == 1 %}text-yellow-400
+                            {% else %}text-green-400{% endif %}">
+                            {{ info.attempts_this_month }}/{{ monthly_limit }}
+                        </span>
+                        &nbsp;|&nbsp; Left:
+                        <span class="font-bold {% if info.attempts_remaining == 0 %}text-red-400{% else %}text-green-400{% endif %}">
+                            {{ info.attempts_remaining }}
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Full Results Table -->
+        <div class="card rounded-xl overflow-hidden">
+            <div class="p-4 border-b border-slate-700">
+                <h2 class="font-bold text-gray-300">📋 All Exam Records</h2>
+            </div>
+            <table class="w-full text-sm">
+                <thead class="bg-slate-800">
+                    <tr>
+                        <th class="p-3 text-left">Candidate</th>
+                        <th class="p-3 text-left">Module</th>
+                        <th class="p-3 text-center">Score</th>
+                        <th class="p-3 text-center">Correct</th>
+                        <th class="p-3 text-center">Status</th>
+                        <th class="p-3 text-left">Completed</th>
+                        <th class="p-3 text-left">Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results %}
+                    <tr class="border-t border-slate-700 hover:bg-slate-800/50">
+                        <td class="p-3 font-semibold">
+                            {% if r.candidate_name %}
+                                {{ r.candidate_name }}
+                                {% if r.candidate_name in candidate_alerts and candidate_alerts[r.candidate_name].alert %}
+                                    <span class="ml-1 text-xs">{{ candidate_alerts[r.candidate_name].alert.icon }}</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="text-gray-500 italic">—</span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-gray-300">{{ r.module }}</td>
+                        <td class="p-3 text-center font-bold {% if r.passed %}pass{% else %}fail{% endif %}">{{ r.score }}%</td>
+                        <td class="p-3 text-center">{{ r.correct_answers }}/{{ r.total_questions }}</td>
+                        <td class="p-3 text-center">
+                            {% if r.passed %}
+                                <span class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs font-bold">PASSED</span>
+                            {% else %}
+                                <span class="bg-red-900 text-red-300 px-2 py-1 rounded text-xs font-bold">FAILED</span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-xs text-gray-400">{{ r.completed_at[:16] }}</td>
+                        <td class="p-3">
+                            <a href="/training/result/{{ r.session_id }}"
+                               class="text-blue-400 hover:text-blue-300 text-xs underline">View →</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% if not results %}
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-gray-400">No exam results yet.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-gray-500">
+            RestoSuite Training System | Admin Dashboard
+        </div>
+    </div>
+</body>
+</html>

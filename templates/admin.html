@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — RestoSuite Training Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .card { background-color: #1e293b; border: 1px solid #334155; }
+        .pass { color: #34d399; }
+        .fail { color: #f87171; }
+        .alert-red { background-color: #450a0a; border-left: 4px solid #ef4444; }
+        .alert-orange { background-color: #431407; border-left: 4px solid #f97316; }
+        .alert-yellow { background-color: #422006; border-left: 4px solid #eab308; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+{% if login_required %}
+    <!-- ===== LOGIN PAGE ===== -->
+    <div class="max-w-md mx-auto mt-20">
+        <div class="card rounded-xl p-8 text-center">
+            <div class="text-5xl mb-4">🔒</div>
+            <h1 class="text-2xl font-bold mb-2 text-blue-400">Admin Login</h1>
+            <p class="text-gray-400 text-sm mb-6">RestoSuite Training System</p>
+            {% if auth_error %}
+            <div class="bg-red-900/40 border border-red-700 rounded-lg p-3 mb-4 text-sm text-red-300">
+                Invalid credentials. Please try again.
+            </div>
+            {% endif %}
+            <form method="POST" action="/training/admin/login" id="login-form">
+                <div class="mb-4">
+                    <input type="text" name="username" placeholder="Username"
+                           class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white text-sm focus:outline-none focus:border-blue-500" required autofocus>
+                </div>
+                <div class="mb-6">
+                    <input type="password" name="password" placeholder="Password"
+                           class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white text-sm focus:outline-none focus:border-blue-500" required>
+                </div>
+                <button type="submit"
+                        class="btn-primary w-full py-3 rounded-lg font-bold text-base"
+                        style="background-color:#3b82f6;color:white;">
+                    Sign In →
+                </button>
+            </form>
+            <p class="mt-4 text-xs text-gray-600">
+                Authorized personnel only
+            </p>
+        </div>
+    </div>
+
+{% else %}
+    <!-- ===== DASHBOARD ===== -->
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-blue-400">📊 考核评估总览</h1>
+                <p class="text-gray-400 text-sm">RestoSuite Training System — Admin Dashboard</p>
+            </div>
+            <div class="text-right text-xs text-gray-500">
+                {% set year_month = candidate_alerts.items() | first | default(none) %}
+                
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        {% set total_candidates = candidate_alerts | length %}
+        {% set certified_count = namespace(count=0) %}
+        {% set entry_count = namespace(count=0) %}
+        {% set not_started_count = namespace(count=0) %}
+        {% for name, info in candidate_alerts.items() %}
+            {% if info.level.level == 'certified' %}{% set certified_count.count = certified_count.count + 1 %}
+            {% elif info.level.level == 'entry' %}{% set entry_count.count = entry_count.count + 1 %}
+            {% else %}{% set not_started_count.count = not_started_count.count + 1 %}{% endif %}
+        {% endfor %}
+        {% set total_exams = results | length %}
+        {% set passed_count = namespace(count=0) %}
+        {% for r in results %}{% if r.passed %}{% set passed_count.count = passed_count.count + 1 %}{% endif %}{% endfor %}
+        {% set alert_count = namespace(count=0) %}
+        {% for name, info in candidate_alerts.items() %}{% if info.alert %}{% set alert_count.count = alert_count.count + 1 %}{% endif %}{% endfor %}
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mb-6">
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-blue-400">{{ total_candidates }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">总人数</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-green-400">{{ certified_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">🟢 已认证</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-yellow-400">{{ entry_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">🟡 入门级</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-gray-400">{{ not_started_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">⚪ 未开始</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-blue-400">{{ total_exams }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">总考试次数</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-green-400">{{ passed_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">✅ 通过</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-red-400">{{ total_exams - passed_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">❌ 未通过</div>
+            </div>
+            <div class="card rounded-xl p-3 text-center">
+                <div class="text-2xl font-bold text-yellow-400">{{ alert_count.count }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">🚨 预警</div>
+            </div>
+        </div>
+
+        <!-- Candidate Level Overview -->
+        <div class="card rounded-xl overflow-hidden mb-6">
+            <div class="p-4 border-b border-slate-700 flex justify-between items-center">
+                <h2 class="font-bold text-gray-300">👥 人员考核评估总览</h2>
+                <span class="text-xs text-gray-500">按级别排序</span>
+            </div>
+            <table class="w-full text-sm">
+                <thead class="bg-slate-800">
+                    <tr>
+                        <th class="p-3 text-left">姓名</th>
+                        <th class="p-3 text-center">级别</th>
+                        <th class="p-3 text-center">首次考试</th>
+                        <th class="p-3 text-center">通过日期</th>
+                        <th class="p-3 text-center">最佳成绩</th>
+                        <th class="p-3 text-center">本月正式</th>
+                        <th class="p-3 text-center">🎯 本月模拟</th>
+                        <th class="p-3 text-center">预警</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, info in candidate_alerts.items() %}
+                    {% set lv = info.level %}
+                    <tr class="border-t border-slate-700 hover:bg-slate-800/50">
+                        <td class="p-3 font-semibold">{{ name }}</td>
+                        <td class="p-3 text-center">
+                            <span class="px-2 py-0.5 rounded text-xs font-bold
+                                {% if lv.level == 'certified' %}bg-green-900 text-green-300
+                                {% elif lv.level == 'entry' %}bg-yellow-900 text-yellow-300
+                                {% else %}bg-slate-700 text-gray-400{% endif %}">
+                                {{ lv.icon }} {{ lv.label_zh }}
+                            </span>
+                        </td>
+                        <td class="p-3 text-center text-xs text-gray-400">
+                            {{ info.monthly_stats[-1].year_month + '-01' if info.monthly_stats else '—' }}
+                        </td>
+                        <td class="p-3 text-center text-xs">
+                            {% if lv.first_pass_date %}
+                                <span class="text-green-400">{{ lv.first_pass_date }}</span>
+                            {% else %}
+                                <span class="text-gray-500">—</span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-center font-bold
+                            {% if lv.best_score >= 80 %}pass{% else %}fail{% endif %}">
+                            {{ lv.best_score }}%
+                        </td>
+                        <td class="p-3 text-center text-xs">
+                            <span class="{% if info.attempts_this_month >= monthly_limit %}text-red-400{% elif info.attempts_this_month >= 1 %}text-yellow-400{% else %}text-gray-400{% endif %}">
+                                {{ info.attempts_this_month }}/{{ monthly_limit }}
+                            </span>
+                        </td>
+                        <td class="p-3 text-center text-xs">
+                            <span class="text-purple-400">{{ info.mock_attempts_this_month }}</span>
+                        </td>
+                        <td class="p-3 text-center">
+                            {% if info.alert %}
+                                <span title="{{ info.alert.msg_en }}">{{ info.alert.icon }}</span>
+                            {% else %}
+                                <span class="text-gray-600">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% if not candidate_alerts %}
+                    <tr>
+                        <td colspan="8" class="p-8 text-center text-gray-400">暂无考试记录</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ⚠️ HR Alerts -->
+        {% set has_alerts = namespace(found=False) %}
+        {% for name, info in candidate_alerts.items() %}
+            {% if info.alert %}{% set has_alerts.found = True %}{% endif %}
+        {% endfor %}
+        {% if has_alerts.found %}
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 text-yellow-400">⚠️ HR Action Required</h2>
+            {% for name, info in candidate_alerts.items() %}
+            {% if info.alert %}
+            {% set a = info.alert %}
+            <div class="rounded-xl p-4 mb-3 alert-{{ a.color }}">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xl">{{ a.icon }}</span>
+                            <span class="font-bold text-white">{{ name }}</span>
+                            <span class="px-2 py-0.5 rounded text-xs font-bold
+                                {% if a.level == 'termination' %}bg-red-700 text-red-200
+                                {% elif a.level == 'written_warning' %}bg-orange-700 text-orange-200
+                                {% else %}bg-yellow-700 text-yellow-200{% endif %}">
+                                {{ a.label_en }} / {{ a.label_zh }}
+                            </span>
+                        </div>
+                        <p class="text-sm text-gray-300">{{ a.msg_en }}</p>
+                        <p class="text-sm text-gray-400">{{ a.msg_zh }}</p>
+                    </div>
+                    <div class="text-right text-xs text-gray-400 ml-4 flex-shrink-0">
+                        <div>Consecutive failed months:</div>
+                        <div class="text-2xl font-bold
+                            {% if info.consecutive_failed_months >= 3 %}text-red-400
+                            {% elif info.consecutive_failed_months == 2 %}text-orange-400
+                            {% else %}text-yellow-400{% endif %}">
+                            {{ info.consecutive_failed_months }}
+                        </div>
+                    </div>
+                </div>
+                {% if info.monthly_stats %}
+                <div class="mt-3 flex gap-2 flex-wrap">
+                    {% for m in info.monthly_stats %}
+                    <span class="px-2 py-1 rounded text-xs
+                        {% if m.all_failed %}bg-red-900 text-red-300{% else %}bg-green-900 text-green-300{% endif %}">
+                        {{ m.year_month }}: {{ '✗ Failed' if m.all_failed else '✓ Passed' }}
+                        ({{ m.attempts }} attempt{{ 's' if m.attempts > 1 else '' }}, best {{ m.best_score }}%)
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- This Month's Usage -->
+        {% if candidate_alerts %}
+        <div class="card rounded-xl p-4 mb-6">
+            <h2 class="text-base font-bold mb-3 text-gray-300">📅 本月考核概况</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {% for name, info in candidate_alerts.items() %}
+                <div class="bg-slate-800 rounded-lg p-3">
+                    <div class="font-semibold text-sm mb-1 flex items-center gap-1">
+                        {{ info.level.icon if info.level else '' }}
+                        {{ name }}
+                    </div>
+                    <div class="text-xs text-gray-400 space-y-0.5">
+                        <div>正式: <span class="font-bold {% if info.attempts_this_month >= monthly_limit %}text-red-400{% else %}text-green-400{% endif %}">
+                            {{ info.attempts_this_month }}/{{ monthly_limit }}</span>
+                            <span class="text-gray-500">| 剩余 {{ info.attempts_remaining }}</span>
+                        </div>
+                        <div>🎯 模拟: <span class="font-bold text-purple-400">{{ info.mock_attempts_this_month }} 次</span></div>
+                        <div class="text-xs {% if info.level.level == 'certified' %}text-green-400{% elif info.level.level == 'entry' %}text-yellow-400{% else %}text-gray-500{% endif %}">
+                            {{ info.level.icon }} {{ info.level.label_zh }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- All Exam Records -->
+        <div class="card rounded-xl overflow-hidden">
+            <div class="p-4 border-b border-slate-700">
+                <h2 class="font-bold text-gray-300">📋 全部考试记录</h2>
+            </div>
+            <table class="w-full text-sm">
+                <thead class="bg-slate-800">
+                    <tr>
+                        <th class="p-3 text-left">考生</th>
+                        <th class="p-3 text-left">级别</th>
+                        <th class="p-3 text-left">模块</th>
+                        <th class="p-3 text-center">成绩</th>
+                        <th class="p-3 text-center">正确</th>
+                        <th class="p-3 text-center">结果</th>
+                        <th class="p-3 text-left">时间</th>
+                        <th class="p-3 text-left">详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results %}
+                    <tr class="border-t border-slate-700 hover:bg-slate-800/50">
+                        <td class="p-3 font-semibold">
+                            {% if r.candidate_name %}
+                                {{ r.candidate_name }}
+                                {% if r.candidate_name in candidate_alerts and candidate_alerts[r.candidate_name].alert %}
+                                    <span class="ml-1 text-xs">{{ candidate_alerts[r.candidate_name].alert.icon }}</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="text-gray-500 italic">—</span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-xs">
+                            {% if r.candidate_name and r.candidate_name in candidate_alerts %}
+                                <span class="px-1.5 py-0.5 rounded text-xs
+                                    {% if candidate_alerts[r.candidate_name].level.level == 'certified' %}bg-green-900 text-green-300
+                                    {% elif candidate_alerts[r.candidate_name].level.level == 'entry' %}bg-yellow-900 text-yellow-300
+                                    {% else %}bg-slate-700 text-gray-400{% endif %}">
+                                    {{ candidate_alerts[r.candidate_name].level.icon }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-gray-300">{{ r.module }}</td>
+                        <td class="p-3 text-center font-bold {% if r.passed %}pass{% else %}fail{% endif %}">{{ r.score }}%</td>
+                        <td class="p-3 text-center">{{ r.correct_answers }}/{{ r.total_questions }}</td>
+                        <td class="p-3 text-center">
+                            {% if r.passed %}
+                                <span class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs font-bold">PASSED</span>
+                            {% else %}
+                                <span class="bg-red-900 text-red-300 px-2 py-1 rounded text-xs font-bold">FAILED</span>
+                            {% endif %}
+                        </td>
+                        <td class="p-3 text-xs text-gray-400">{{ r.completed_at[:16] }}</td>
+                        <td class="p-3">
+                            <a href="/training/result/{{ r.session_id }}"
+                               class="text-blue-400 hover:text-blue-300 text-xs underline">View →</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% if not results %}
+                    <tr>
+                        <td colspan="8" class="p-8 text-center text-gray-400">No exam results yet.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-gray-500">
+            RestoSuite Training System | Admin Dashboard
+        </div>
+    </div>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Database
+exam.db
+*.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Backups
+*.bak
+
+# Environment
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db

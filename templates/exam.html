@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>RestoSuite Exam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .card { background-color: #1e293b; border: 1px solid #334155; }
+        .option-label { display: block; padding: 12px 16px; border: 2px solid #334155; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .option-label:hover { border-color: #3b82f6; background-color: #1e3a5f; }
+        input[type="radio"]:checked + .option-label { border-color: #3b82f6; background-color: #1e3a5f; }
+        input[type="radio"] { display: none; }
+        .btn-primary { background-color: #3b82f6; color: white; }
+        .btn-primary:hover { background-color: #2563eb; }
+        .timer-warning { color: #ef4444; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .lang-zh { display: none; }
+        body.zh-active .lang-zh { display: block; }
+        body.zh-active .lang-en { display: none; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+        <!-- Header -->
+        <div class="card rounded-xl p-4 mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-blue-400">RestoSuite Certification Exam</h1>
+                <p class="text-sm text-gray-400 mt-1">
+                    {% if is_mock %}
+                    <span class="lang-en">{{ num_questions }} Questions | Mock Exam — No Time Limit</span>
+                    <span class="lang-zh">{{ num_questions }} 道题 | 模拟考试 — 无时间限制</span>
+                    {% else %}
+                    <span class="lang-en">{{ num_questions }} Questions | {{ duration_minutes }} Minutes</span>
+                    <span class="lang-zh">{{ num_questions }} 道题 | {{ duration_minutes }} 分钟</span>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="text-right">
+                <div id="timer" class="text-lg font-mono font-bold">{% if is_mock %}∞{% else %}--:--{% endif %}</div>
+                <button onclick="toggleLang()" class="text-xs text-blue-400 hover:text-blue-300 mt-1">
+                    中文/English
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="card rounded-lg p-3 mb-6">
+            <div class="flex justify-between text-xs text-gray-400 mb-1">
+                <span class="lang-en">Progress</span>
+                <span class="lang-zh">进度</span>
+                <span id="progress-text">0/{{ num_questions }}</span>
+            </div>
+            <div class="w-full bg-slate-700 rounded-full h-2">
+                <div id="progress-bar" class="bg-blue-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Exam Form -->
+        <form method="POST" action="/training/submit-exam" id="exam-form">
+            <input type="hidden" name="token" value="{{ token }}">
+            
+            {% for q in questions %}
+            {% set q_idx = loop.index0 %}
+            <div class="card rounded-xl p-6 mb-4 question-card" data-index="{{ loop.index0 }}">
+                <div class="flex items-start gap-3 mb-4">
+                    <span class="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full flex-shrink-0">Q{{ loop.index }}</span>
+                    <div>
+                        <p class="font-medium lang-en">{{ q.question_en }}</p>
+                        <p class="font-medium lang-zh">{{ q.question_zh }}</p>
+                        <span class="inline-block mt-1 text-xs bg-slate-700 text-gray-400 px-2 py-0.5 rounded">{{ q.module }} | {{ q.difficulty }}</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-2 ml-12">
+                    {% for key, opt in q.options.items() %}
+                    <label class="block">
+                        <input type="radio" name="q_{{ q_idx }}" value="{{ key }}" onchange="updateProgress()">
+                        <span class="option-label flex gap-3">
+                            <span class="font-bold text-blue-400 w-6">{{ key }}</span>
+                            <span class="lang-en">{{ opt.en }}</span>
+                            <span class="lang-zh">{{ opt.zh }}</span>
+                        </span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="card rounded-xl p-6 flex justify-between items-center">
+                <div class="text-sm text-gray-400">
+                    <span class="lang-en">Answered: <span id="answered-count">0</span> / {{ num_questions }}</span>
+                    <span class="lang-zh">已答: <span id="answered-count-zh">0</span> / {{ num_questions }}</span>
+                </div>
+                <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-bold text-lg">
+                    <span class="lang-en">Submit Exam</span>
+                    <span class="lang-zh">提交试卷</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Timer
+        {% if is_mock %}
+        // Mock exam: no time limit, no countdown
+        document.getElementById('timer').textContent = '∞';
+        {% else %}
+        let totalSeconds = {{ duration_minutes }} * 60;
+        const timerEl = document.getElementById('timer');
+        
+        function updateTimer() {
+            const mins = Math.floor(totalSeconds / 60);
+            const secs = totalSeconds % 60;
+            timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            
+            if (totalSeconds <= 300) {
+                timerEl.classList.add('timer-warning');
+            }
+            
+            if (totalSeconds <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('exam-form').submit();
+            }
+            totalSeconds--;
+        }
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+        {% endif %}
+
+        // Progress tracking
+        function updateProgress() {
+            const total = {{ num_questions }};
+            let answered = 0;
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q_' + i);
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        answered++;
+                        break;
+                    }
+                }
+            }
+            const pct = (answered / total) * 100;
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('progress-text').textContent = answered + '/' + total;
+            document.getElementById('answered-count').textContent = answered;
+            document.getElementById('answered-count-zh').textContent = answered;
+        }
+
+        // Language toggle
+        function toggleLang() {
+            document.body.classList.toggle('zh-active');
+        }
+
+        // Confirm submit
+        document.getElementById('exam-form').addEventListener('submit', function(e) {
+            const total = {{ num_questions }};
+            let answered = 0;
+            for (let i = 0; i < total; i++) {
+                const radios = document.getElementsByName('q_' + i);
+                for (const radio of radios) {
+                    if (radio.checked) { answered++; break; }
+                }
+            }
+            if (answered < total) {
+                const msg = document.body.classList.contains('zh-active')
+                    ? `您还有 ${total - answered} 道题未作答，确定要提交吗？`
+                    : `You have ${total - answered} unanswered questions. Submit anyway?`;
+                if (!confirm(msg)) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

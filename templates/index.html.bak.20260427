@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>RestoSuite Training Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .card { background-color: #1e293b; border: 1px solid #334155; }
+        .btn-primary { background-color: #3b82f6; color: white; }
+        .btn-primary:hover { background-color: #2563eb; }
+        .btn-mock { background-color: #374151; color: #d1d5db; border: 1px solid #4b5563; }
+        .btn-mock:hover { background-color: #4b5563; }
+        .input-field { background-color: #0f172a; border: 1px solid #334155; color: #e2e8f0; }
+        .input-field:focus { outline: none; border-color: #3b82f6; }
+        .lang-zh { display: none; }
+        body.zh-active .lang-zh { display: block; }
+        body.zh-active .lang-en { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="card rounded-xl p-8 max-w-md w-full">
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold mb-1 text-blue-400">RestoSuite</h1>
+            <p class="text-gray-400 text-sm">
+                <span class="lang-en">Certification Exam System</span>
+                <span class="lang-zh">产品知识认证考试</span>
+            </p>
+        </div>
+
+        <!-- ⚠️ Study Reminder -->
+        <div class="bg-blue-900/30 border border-blue-700 rounded-xl p-4 mb-5">
+            <p class="text-blue-300 text-sm font-semibold mb-1">
+                <span class="lang-en">📚 Before You Start</span>
+                <span class="lang-zh">📚 考前必读</span>
+            </p>
+            <p class="text-blue-200 text-xs leading-relaxed">
+                <span class="lang-en">Please contact <strong>Benedict</strong> (Product Knowledge) to complete your study session before taking the exam. This ensures you are well-prepared and can pass on your first attempt.</span>
+                <span class="lang-zh">请先联系 <strong>Benedict</strong>（产品知识负责人）完成学习，再参加正式考试。确保充分准备，顺利通过。</span>
+            </p>
+        </div>
+
+        {% if error_en %}
+        <div class="bg-red-900/40 border border-red-700 rounded-lg p-3 mb-4 text-sm text-red-300">
+            <span class="lang-en">{{ error_en }}</span>
+            <span class="lang-zh">{{ error_zh }}</span>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/training/start-exam" id="start-form">
+            <input type="hidden" name="exam_type" id="exam_type" value="real">
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-400 mb-2">
+                    <span class="lang-en">Your Name</span>
+                    <span class="lang-zh">考生姓名</span>
+                </label>
+                <input
+                    type="text"
+                    name="candidate_name"
+                    id="candidate_name"
+                    required
+                    placeholder="e.g. Zhang San / 张三"
+                    class="input-field w-full px-4 py-3 rounded-lg text-sm"
+                />
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm text-gray-400 mb-2">
+                    <span class="lang-en">Your Department</span>
+                    <span class="lang-zh">所在部门</span>
+                </label>
+                <select name="department" required class="input-field w-full px-4 py-3 rounded-lg text-sm">
+                    <option value="" disabled selected>
+                        -- Select / 请选择 --
+                    </option>
+                    <option value="sales">Sales / 销售部门</option>
+                    <option value="implementation">Implementation / 实施部门</option>
+                    <option value="customer_service">Customer Service / 客服部门</option>
+                </select>
+            </div>
+
+            <!-- Fixed rules info box -->
+            <div class="bg-slate-800 rounded-lg p-4 mb-5 text-xs text-gray-400 space-y-1.5">
+                <div class="flex justify-between">
+                    <span class="lang-en">Pass Rate</span>
+                    <span class="lang-zh">及格线</span>
+                    <span class="font-bold text-white">80%</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="lang-en">1st Attempt</span>
+                    <span class="lang-zh">第一次考试</span>
+                    <span class="font-bold text-white">30 Questions</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="lang-en">2nd Attempt</span>
+                    <span class="lang-zh">第二次考试</span>
+                    <span class="font-bold text-white">50 Questions</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="lang-en">Monthly Limit</span>
+                    <span class="lang-zh">每月限制</span>
+                    <span class="font-bold text-white">2 Attempts</span>
+                </div>
+            </div>
+
+            <!-- Mock Exam Button -->
+            <button type="button" onclick="startMock()"
+                class="btn-mock w-full py-3 rounded-lg font-semibold text-sm mb-3 transition-colors">
+                <span class="lang-en">🎯 Practice Exam (20Q · No Record)</span>
+                <span class="lang-zh">🎯 模拟考试（20题 · 不计成绩）</span>
+            </button>
+
+            <!-- Real Exam Button -->
+            <button type="submit"
+                class="btn-primary w-full py-3 rounded-lg font-bold text-base transition-colors">
+                <span class="lang-en">Start Official Exam →</span>
+                <span class="lang-zh">开始正式考试 →</span>
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <button onclick="toggleLang()" class="text-xs text-blue-400 hover:text-blue-300">中文 / English</button>
+        </div>
+
+        <div class="mt-4 text-center text-xs text-gray-600">
+            RestoSuite © 2026 | Product Training System
+        </div>
+    </div>
+    <script>
+        function toggleLang() {
+            document.body.classList.toggle('zh-active');
+        }
+        function startMock() {
+            document.getElementById('exam_type').value = 'mock';
+            document.getElementById('start-form').submit();
+        }
+    </script>
+</body>
+</html>

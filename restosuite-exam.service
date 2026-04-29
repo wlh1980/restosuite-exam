@@ -1,0 +1,14 @@
+[Unit]
+Description=RestoSuite Exam System
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/restosuite-exam
+ExecStart=/usr/bin/python3 -m uvicorn main:app --host 127.0.0.1 --port 8500
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3874 @@
+{
+  "metadata": {
+    "title": "RestoSuite SG Implementation Certification Question Bank",
+    "title_zh": "RestoSuite 新加坡实施能力考核题库",
+    "version": "2.0",
+    "date": "2026-04-20",
+    "total_questions": 121,
+    "modules": [
+      "KDS",
+      "Supply Chain",
+      "Marketing",
+      "POS",
+      "Singapore/Malaysia Localization"
+    ],
+    "language": "zh-CN + en-US",
+    "target_regions": [
+      "Singapore",
+      "Malaysia"
+    ],
+    "difficulty_levels": {
+      "L1": {
+        "name": "基础认知",
+        "name_en": "Basic Knowledge",
+        "count": 19
+      },
+      "L2": {
+        "name": "岗位专项",
+        "name_en": "Role-Specific",
+        "count": 98
+      },
+      "L3": {
+        "name": "高级应用",
+        "name_en": "Advanced Application",
+        "count": 29
+      },
+      "L4": {
+        "name": "渠道导师",
+        "name_en": "Channel Mentor",
+        "count": 0
+      }
+    },
+    "module_distribution": {
+      "KDS": 20,
+      "Supply Chain": 11,
+      "Marketing": 20,
+      "POS": 55,
+      "Singapore/Malaysia Localization": 15
+    },
+    "last_updated": "2026-04-29 (去重+优化歧义选项)"
+  },
+  "questions": [
+    {
+      "id": "KDS-001",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When deploying multiple KDS devices in a store, which of the following is correct regarding the Local Server configuration?",
+      "question_zh": "在门店部署多台 KDS 设备时，关于 Local Server（本地服务器）的配置规则，以下哪项是正确的？",
+      "options": {
+        "A": {
+          "en": "Every KDS device must enable the Local Server service to ensure data synchronization.",
+          "zh": "每一台 KDS 设备都必须开启 Local Server 服务以保证数据同步。"
+        },
+        "B": {
+          "en": "The best-performing device is set as the host with Local Server enabled, and other devices connect as clients.",
+          "zh": "性能最好的一台设备设为主机并开启 Local Server，其余设备作为副机连接。"
+        },
+        "C": {
+          "en": "As long as POS is enabled, KDS can run without configuring a Local Server.",
+          "zh": "只要 POS 开启了，KDS 不需要设置 Local Server 也可以运行。"
+        },
+        "D": {
+          "en": "To prevent network outages, it is recommended to set up at least two Local Servers for hot backup.",
+          "zh": "为了防止断网，建议至少设置两台 Local Server 进行热备份。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "When deploying multiple KDS devices, the best-performing device should be set as the host with Local Server enabled, and other devices connect to it.",
+      "explanation_zh": "KDS多设备部署时，应选择性能最好的设备作为主机开启Local Server，其他设备连接主机。"
+    },
+    {
+      "id": "KDS-002",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When installing the Android version of KDS, if prompted 'Cannot install apps from unknown sources', what should the implementation staff do?",
+      "question_zh": "实施人员在安装安卓版 KDS 时，如果提示'无法安装未知来源程序'，应该如何处理？",
+      "options": {
+        "A": {
+          "en": "Give up installation and contact R&D for a signed version.",
+          "zh": "放弃安装，联系研发打包已签名版本。"
+        },
+        "B": {
+          "en": "Go to system settings and enable 'Allow installation from unknown sources'.",
+          "zh": "在系统设置中点击允许未知程序来源安装。"
+        },
+        "C": {
+          "en": "The device must be rooted first before installation.",
+          "zh": "必须先对设备进行 Root 提权后才能安装。"
+        },
+        "D": {
+          "en": "Change the file extension to .zip and extract directly.",
+          "zh": "将安装包后缀名改为 .zip 后直接解压。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Android systems block unknown source apps by default. You need to enable this permission in settings.",
+      "explanation_zh": "Android系统默认禁止安装未知来源应用，需要在设置中开启允许安装。"
+    },
+    {
+      "id": "KDS-003",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "After configuring production departments in BO, if KDS still cannot receive orders, what should the implementation staff check first on the POS side?",
+      "question_zh": "在后台（BO）配置好出品部门后，KDS 仍然接收不到订单，实施人员首先应检查 POS 端的哪项设置？",
+      "options": {
+        "A": {
+          "en": "Check if POS is connected to an external printer.",
+          "zh": "检查 POS 是否连接了外部打印机。"
+        },
+        "B": {
+          "en": "Check if the 'KDS Switch' is enabled in POS settings.",
+          "zh": "检查 POS 设置中是否开启了'KDS 开关'。"
+        },
+        "C": {
+          "en": "Check if the POS business date spans across days.",
+          "zh": "检查 POS 的营业日期是否跨天。"
+        },
+        "D": {
+          "en": "Check if POS staff have void item permissions.",
+          "zh": "检查 POS 员工是否有退菜权限。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "KDS requires the 'KDS Switch' to be enabled on POS to receive order data.",
+      "explanation_zh": "KDS接收订单需要在POS端开启KDS开关，这是数据推送的前提条件。"
+    },
+    {
+      "id": "KDS-004",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "A BBQ restaurant requires the kitchen to only see the total number of dishes for preparation, without focusing on order numbers. Which KDS screen mode should the implementation staff set?",
+      "question_zh": "某烧烤店要求后厨只看菜品总数进行制作，不关注订单号，实施人员应将 KDS 屏幕模式设置为？",
+      "options": {
+        "A": {
+          "en": "Order Mode — each order is displayed separately.",
+          "zh": "订单模式——每张订单单独显示，按订单号区分。"
+        },
+        "B": {
+          "en": "Lane Mode — dishes are grouped by preparation lane/stage.",
+          "zh": "泳道模式——按制作通道分栏展示菜品。"
+        },
+        "C": {
+          "en": "Dish Merge Mode — same dishes from all orders are merged into one line showing total quantity.",
+          "zh": "菜品合并模式——所有订单中的同名菜品合并为一行，只显示总数量，不显示订单号。"
+        },
+        "D": {
+          "en": "Dish Split Mode — each dish item is displayed as a separate line even if it's the same dish.",
+          "zh": "菜品拆分模式——即使同一菜品，每个订单项都单独显示为一行，不会合并。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Dish Merge Mode aggregates items for high-volume cooking scenarios like BBQ, showing total counts instead of individual orders.",
+      "explanation_zh": "菜品合并模式适用于烧烤等场景，按菜品总数显示，不按订单分开。"
+    },
+    {
+      "id": "KDS-005",
+      "module": "KDS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the 'upload to kitchen screen' linkage logic, when the pass-through screen performs a 'recall' operation, which description is correct?",
+      "question_zh": "关于'下单上传菜屏'联动逻辑，当传菜屏执行'撤回'操作时，以下描述正确的是？",
+      "options": {
+        "A": {
+          "en": "Only recalls the pass-through screen; the front production screen is not affected.",
+          "zh": "只撤回传菜屏，前置制作屏不会受到任何影响。"
+        },
+        "B": {
+          "en": "After the pass-through screen recalls, the items crossed out on the front screen will be synchronously recalled (not manually crossed).",
+          "zh": "传菜屏撤回后，前屏被联动划掉的菜品会同步撤回（非人工划菜）。"
+        },
+        "C": {
+          "en": "Regardless of whether the front screen was manually crossed, recalling the pass-through screen will force reset the entire chain.",
+          "zh": "无论前屏是否为手动划菜，撤回传菜屏都会强制重置整条链路。"
+        },
+        "D": {
+          "en": "The recall operation will directly void the order, requiring re-ordering.",
+          "zh": "撤回操作会导致订单直接作废，需要重新下单。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Recalling on the pass-through screen synchronously recalls items that were auto-crossed on the front screen, but not manually crossed items.",
+      "explanation_zh": "传菜屏撤回会同步撤回前屏被联动划掉的菜品，但不会影响人工划菜的记录。"
+    },
+    {
+      "id": "KDS-006",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "The implementation staff wants to achieve 'auto call number when meal prep is complete', but after clicking complete on KDS, the call number screen does not respond. What could be the reason?",
+      "question_zh": "实施人员希望实现'整单备餐完成后自动叫号'，但在 KDS 上点击划菜后叫号屏没反应，可能的原因是？",
+      "options": {
+        "A": {
+          "en": "The 'Call Number for Pickup' configuration switch must be enabled.",
+          "zh": "必须开启'叫号取餐'配置开关。"
+        },
+        "B": {
+          "en": "KDS is not connected to the internet; call number can only work on intranet.",
+          "zh": "KDS 没有连接互联网，叫号只能走内网。"
+        },
+        "C": {
+          "en": "Employee PIN code is entered incorrectly, causing permission failure.",
+          "zh": "员工 PIN 码输入错误，导致权限失效。"
+        },
+        "D": {
+          "en": "The call number screen must be triggered by POS; KDS cannot trigger it directly.",
+          "zh": "叫号屏必须由 POS 触发，KDS 无法直接触发。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "The 'Call Number for Pickup' feature must be explicitly enabled in BO settings for KDS to trigger the call number screen.",
+      "explanation_zh": "需要在BO后台开启'叫号取餐'配置开关，KDS才能触发叫号屏。"
+    },
+    {
+      "id": "KDS-007",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When configuring KDS printing functionality, which of the following is 'mandatory'?",
+      "question_zh": "在配置 KDS 打印功能时，以下哪项是'必填'项？",
+      "options": {
+        "A": {
+          "en": "Check 'Use graphic printing'.",
+          "zh": "勾选'使用图形打印'。"
+        },
+        "B": {
+          "en": "Set order types that should not print (e.g., takeout).",
+          "zh": "设置不打印的订单类型（如自提）。"
+        },
+        "C": {
+          "en": "Configure printer name, check receipt type, select print language.",
+          "zh": "配置打印机名称、勾选票据类型、选择打印语言。"
+        },
+        "D": {
+          "en": "Must configure cloud print server address.",
+          "zh": "必须配置云端打印服务器地址。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Printer name, receipt type, and print language are mandatory fields for KDS printing configuration.",
+      "explanation_zh": "打印机名称、票据类型、打印语言是KDS打印配置的必填项。"
+    },
+    {
+      "id": "KDS-008",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The implementation staff finds that the KDS interface text is too small for chefs to read clearly. Which option should be adjusted in settings?",
+      "question_zh": "实施人员发现 KDS 界面文字太小，厨师看不清，应在设置中调整哪个选项？",
+      "options": {
+        "A": {
+          "en": "Screen resolution",
+          "zh": "屏幕分辨率"
+        },
+        "B": {
+          "en": "Style template switch",
+          "zh": "样式模板切换"
+        },
+        "C": {
+          "en": "Display settings - Text size (supports Small/Medium/Large/XL/XXL)",
+          "zh": "显示设置 - 文字大小（支持小/中/大/加大/超大）"
+        },
+        "D": {
+          "en": "Force modify the Android system DPI value",
+          "zh": "强制修改安卓系统的 DPI 值"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "KDS has built-in text size adjustment with 5 levels, accessible directly in Display Settings.",
+      "explanation_zh": "KDS内置文字大小调节功能，支持5级调节，在显示设置中直接调整。"
+    },
+    {
+      "id": "KDS-009",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the 'KDS auto-login' feature, if the implementation staff finds that PIN code is required every time entering KDS, where should the configuration be modified?",
+      "question_zh": "关于'KDS 免登录'功能，如果实施人员发现每次进入都需要输入 PIN 码，应在何处修改配置？",
+      "options": {
+        "A": {
+          "en": "KDS local permission management interface.",
+          "zh": "KDS 本地的权限管理界面。"
+        },
+        "B": {
+          "en": "Employee account settings on POS.",
+          "zh": "POS 端的员工账号设置。"
+        },
+        "C": {
+          "en": "BO Backend - Restaurant Management - Business Parameters - KDS Auto-Login.",
+          "zh": "BO 后台 - 餐厅管理 - 业务参数 - KDS 免登录。"
+        },
+        "D": {
+          "en": "Uninstall and reinstall KDS to default to auto-login.",
+          "zh": "直接卸载重装 KDS 即可默认免登。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "KDS auto-login is configured in BO under Restaurant Management > Business Parameters.",
+      "explanation_zh": "KDS免登录功能在BO后台的餐厅管理-业务参数中配置。"
+    },
+    {
+      "id": "KDS-010",
+      "module": "KDS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In 'fixed lane mode', if a newly launched dish is not configured to any lane, how will the system handle it?",
+      "question_zh": "在'固定列模式'下，如果新上市的菜品没有配置到任何泳道，系统会如何处理？",
+      "options": {
+        "A": {
+          "en": "The dish disappears and will not display on KDS.",
+          "zh": "菜品直接消失，不会在 KDS 上显示。"
+        },
+        "B": {
+          "en": "Order error occurs, causing POS unable to place orders.",
+          "zh": "订单报错，导致 POS 无法下单。"
+        },
+        "C": {
+          "en": "The system will fallback, displaying it in the last lane or outside lanes.",
+          "zh": "系统会兜底，默认显示在最后一个泳道或泳道外。"
+        },
+        "D": {
+          "en": "Auto popup prompts the implementation staff to configure immediately.",
+          "zh": "自动弹窗提示实施人员立即配置。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "In fixed lane mode, unconfigured dishes will fallback to the last lane or display outside lanes to prevent order loss.",
+      "explanation_zh": "固定列模式下，未配置泳道的菜品会兜底显示在最后一个泳道或泳道外。"
+    },
+    {
+      "id": "KDS-011",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "How can the implementation staff quickly apply KDS parameters tuned for one store to other chain stores?",
+      "question_zh": "实施人员如何将一家店调优好的 KDS 参数快速应用到其他连锁门店？",
+      "options": {
+        "A": {
+          "en": "Copy the Android device's Data folder to the new device.",
+          "zh": "拷贝安卓设备的 Data 文件夹到新设备。"
+        },
+        "B": {
+          "en": "Use 'KDS Scheme Upload & Distribute' feature, upload to cloud then distribute.",
+          "zh": "使用'KDS 方案上传下发'功能，上传至云端后再下发。"
+        },
+        "C": {
+          "en": "Can only manually compare photos and click item by item in new stores.",
+          "zh": "只能手动对照拍照，逐项在新门店点击。"
+        },
+        "D": {
+          "en": "Let each store manager configure themselves according to the manual.",
+          "zh": "让各门店店长自行根据说明书配置。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "KDS Scheme Upload & Distribute allows cloud-based configuration sharing across chain stores.",
+      "explanation_zh": "使用KDS方案上传下发功能，可将配置上传云端后批量下发到其他门店。"
+    },
+    {
+      "id": "KDS-012",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In KDS 'timeout reminder' feature, if you want dishes to change color based on 'production time' set in BO, which reminder type should be selected?",
+      "question_zh": "在 KDS 的'超时提醒'功能中，如果希望根据不同菜品在后台设置的'制作时长'来变色，应选择哪种提醒类型？",
+      "options": {
+        "A": {
+          "en": "Unified timeout (calculated from screen-on time).",
+          "zh": "统一设置超时（按上屏时间算）。"
+        },
+        "B": {
+          "en": "Dish production time (calculated based on BO dish master production time).",
+          "zh": "菜品制作时长（根据 BO 菜品主档设置的时长算）。"
+        },
+        "C": {
+          "en": "Manual timing mode.",
+          "zh": "手动计时模式。"
+        },
+        "D": {
+          "en": "Calculated from order placement time.",
+          "zh": "按下单时间计算。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Dish production time uses the preparation duration configured in BO dish master for color change triggers.",
+      "explanation_zh": "菜品制作时长类型会根据BO菜品主档设置的制作时间来触发变色提醒。"
+    },
+    {
+      "id": "KDS-013",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When KDS displays an 'expired and disabled' popup and becomes unresponsive, what operation should the implementation staff guide the merchant to perform?",
+      "question_zh": "当 KDS 显示'过期停用'弹窗且无法操作时，实施人员应引导商家执行什么操作？",
+      "options": {
+        "A": {
+          "en": "Check if network connection is disconnected.",
+          "zh": "检查网络连接是否断开。"
+        },
+        "B": {
+          "en": "Check if Local Server is running.",
+          "zh": "检查 Local Server 是否启动。"
+        },
+        "C": {
+          "en": "Renew the subscription in time to ensure sufficient licenses and not expired.",
+          "zh": "及时进行续费，确保点位充足或未过期。"
+        },
+        "D": {
+          "en": "Force clear app cache to bypass the reminder.",
+          "zh": "强制清除应用缓存绕过提醒。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "KDS becomes disabled when the subscription expires. Renewal is required to restore functionality.",
+      "explanation_zh": "KDS过期停用是因为授权到期，需要续费后才能恢复正常使用。"
+    },
+    {
+      "id": "KDS-014",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In 'dish split mode', for a non-weighing dish with quantity 5, how will KDS display it?",
+      "question_zh": "在'菜品拆分模式'下，非称重菜品数量为 5，KDS 会如何展示？",
+      "options": {
+        "A": {
+          "en": "Display 1 row with quantity marked as 5.",
+          "zh": "展示 1 行，数量标明 5。"
+        },
+        "B": {
+          "en": "Split into 5 independent cards, each with quantity 1.",
+          "zh": "拆分成 5 个独立的卡片，每个数量为 1。"
+        },
+        "C": {
+          "en": "Merge display, but require popup input for quantity when crossing.",
+          "zh": "合并展示，但在划菜时需要弹窗输入数量。"
+        },
+        "D": {
+          "en": "Only display the first portion, hide the remaining 4.",
+          "zh": "仅展示第 1 份，其余 4 份隐藏。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Dish split mode creates individual cards for each unit, making it easy for kitchen staff to track each item separately.",
+      "explanation_zh": "菜品拆分模式会将每份菜品拆成独立卡片，方便后厨逐一制作。"
+    },
+    {
+      "id": "KDS-015",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding KDS 'permission management', which description is INCORRECT?",
+      "question_zh": "关于 KDS 的'权限管理'，以下描述错误的是？",
+      "options": {
+        "A": {
+          "en": "You can assign 'Kitchen Manager' role to employees in BO.",
+          "zh": "可以在 BO 给员工分配'后厨负责人'角色。"
+        },
+        "B": {
+          "en": "Kitchen Manager role has all KDS operation permissions by default.",
+          "zh": "后厨负责人角色默认拥有 KDS 的所有操作权限。"
+        },
+        "C": {
+          "en": "Implementation staff can customize roles and check corresponding permissions.",
+          "zh": "实施人员可以自定义角色并勾选对应权限。"
+        },
+        "D": {
+          "en": "As long as you can log in to KDS, all employees have exactly the same permissions.",
+          "zh": "只要能登录 KDS，所有员工的权限都是完全一样的。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "KDS supports role-based permission management. Different roles have different permissions.",
+      "explanation_zh": "KDS支持角色权限管理，不同角色的权限不同，不是所有人都一样。"
+    },
+    {
+      "id": "KDS-016",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "A fast food restaurant requires delivery orders to be displayed first on KDS. Which configuration should the implementation staff enable?",
+      "question_zh": "某快餐店要求外卖订单在 KDS 上必须最先显示，实施人员应开启哪项配置？",
+      "options": {
+        "A": {
+          "en": "Switch to delivery mode.",
+          "zh": "外卖模式切换。"
+        },
+        "B": {
+          "en": "Display settings - Order rule - Delivery order pin to top.",
+          "zh": "显示设置 - 排单规则 - 外卖置顶。"
+        },
+        "C": {
+          "en": "Disable all dine-in order screen-on permissions.",
+          "zh": "禁用所有堂食订单的上屏权限。"
+        },
+        "D": {
+          "en": "Modify the order placement time for delivery orders on POS.",
+          "zh": "修改 POS 端外卖订单的下单时间。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The 'Delivery Order Pin to Top' setting in Display Settings ensures delivery orders appear first on KDS.",
+      "explanation_zh": "在显示设置的排单规则中开启'外卖置顶'，外卖订单会优先显示。"
+    },
+    {
+      "id": "KDS-017",
+      "module": "KDS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The implementation staff finds that when voiding items, the KDS flashing covers the order header information, making it impossible to see which table it is. How to optimize this?",
+      "question_zh": "实施人员发现退菜时 KDS 的闪烁会盖住单头信息，看不到是哪一桌，该如何优化？",
+      "options": {
+        "A": {
+          "en": "Increase screen brightness.",
+          "zh": "调大屏幕亮度。"
+        },
+        "B": {
+          "en": "Enable 'void menu header flashing info shows table number/dish name' feature.",
+          "zh": "开启'退菜单头闪烁信息显示桌台号/菜品名称'的功能。"
+        },
+        "C": {
+          "en": "Disable void reminder voice.",
+          "zh": "禁用退菜提醒语音。"
+        },
+        "D": {
+          "en": "Tell chefs to wait until the flashing stops before checking.",
+          "zh": "告诉厨师等闪烁停了再看。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "This feature displays table number and dish name in the flashing header during void operations for better visibility.",
+      "explanation_zh": "开启此功能后，退菜闪烁时会在单头显示桌台号和菜品名称，方便识别。"
+    },
+    {
+      "id": "KDS-018",
+      "module": "KDS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding 'screen merge mode', when closing a station during low peak hours, what is the operation logic for the implementation staff?",
+      "question_zh": "关于'屏合并模式'，当营业低峰期关闭某档口后，实施人员的操作逻辑是？",
+      "options": {
+        "A": {
+          "en": "Simply turn off the KDS for that station.",
+          "zh": "直接关掉该档口的 KDS 即可。"
+        },
+        "B": {
+          "en": "Enable 'screen merge mode' on another KDS, select the offline screen for task merging.",
+          "zh": "在另一台 KDS 上开启'屏合并模式'，选择已掉线的屏进行任务合并。"
+        },
+        "C": {
+          "en": "Must re-divide production departments in BO.",
+          "zh": "必须在 BO 重新划分出品部门。"
+        },
+        "D": {
+          "en": "Manually plug the network cable of that station to another machine.",
+          "zh": "手动将该档口的网线插到另一台机器上。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Screen merge mode allows tasks from an offline station to be merged to another active KDS during low peak hours.",
+      "explanation_zh": "屏合并模式可将关闭档口的任务合并到另一台正常运行的KDS上。"
+    },
+    {
+      "id": "KDS-019",
+      "module": "KDS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When configuring KDS voice reminders, if 'no voice engine detected' appears, what should be done?",
+      "question_zh": "实施人员在配置 KDS 语音提醒时，如果发现'未检测到语音引擎'，应该？",
+      "options": {
+        "A": {
+          "en": "Turn up the physical volume of the KDS device.",
+          "zh": "调大 KDS 设备的物理音量。"
+        },
+        "B": {
+          "en": "Install voice plugin in the device system (e.g., iFlyTek or Google Voice Engine).",
+          "zh": "在设备系统中安装语音插件（如科大讯飞或谷歌语音引擎）。"
+        },
+        "C": {
+          "en": "Replace with a high-fidelity speaker.",
+          "zh": "换一个高保真音箱。"
+        },
+        "D": {
+          "en": "Restart the Local Server service.",
+          "zh": "重启 Local Server 服务。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "KDS requires a voice engine (iFlyTek for China, Google for overseas) to be installed for voice reminders.",
+      "explanation_zh": "KDS语音提醒需要安装语音引擎，国内用科大讯飞，海外用谷歌语音引擎。"
+    },
+    {
+      "id": "KDS-020",
+      "module": "KDS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "Regarding the 'data management' value of KDS, which of the following is NOT directly provided by KDS?",
+      "question_zh": "关于 KDS 的'数据管理'价值，以下哪项不是 KDS 能直接提供的？",
+      "options": {
+        "A": {
+          "en": "Record order acceptance time, production duration, and serving time for each order.",
+          "zh": "记录每单的接单时间、制作耗时和出餐时间。"
+        },
+        "B": {
+          "en": "Analyze inefficient links where certain dishes take too long to prepare.",
+          "zh": "分析某类菜品制作耗时过长的低效环节。"
+        },
+        "C": {
+          "en": "Automatically calculate chef monthly performance wages and deposit to bank cards.",
+          "zh": "自动计算厨师每月的绩效工资并发放至银行卡。"
+        },
+        "D": {
+          "en": "Trace wrong/missed meal order records when customers complain.",
+          "zh": "回溯顾客投诉时的错餐/漏餐订单记录。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "KDS tracks production data for efficiency analysis but does not handle payroll or wage calculations.",
+      "explanation_zh": "KDS记录制作数据用于效率分析，但不处理工资计算和发放。"
+    },
+    {
+      "id": "SC-001",
+      "module": "Supply Chain",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In the 'Supplier Collaboration APP', how to achieve automatic order acceptance and delivery for purchase orders?",
+      "question_zh": "在'供应商协同APP'中，如何实现采购订单的自动接单和发货？",
+      "options": {
+        "A": {
+          "en": "The distribution center sets 'auto process' tag for each supplier in BOH backend.",
+          "zh": "由配送中心在BOH后台为每个供应商设置'自动处理'标签。"
+        },
+        "B": {
+          "en": "Suppliers check 'auto accept, auto deliver' in APP's 'My - Business Parameters'.",
+          "zh": "供应商在APP的'我的-业务参数'中自行勾选'自动接单、自动发货'。"
+        },
+        "C": {
+          "en": "When the distribution center reviews purchase orders, select 'auto push to supplier and deliver'.",
+          "zh": "配送中心审核采购订单时，选择'自动推送至供应商并发货'。"
+        },
+        "D": {
+          "en": "Cannot be achieved; all orders require manual operation by suppliers.",
+          "zh": "无法实现，所有订单均需供应商手动操作。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Suppliers can enable auto accept and auto delivery in their APP business parameters.",
+      "explanation_zh": "供应商可在APP的业务参数中自行开启自动接单和自动发货功能。"
+    },
+    {
+      "id": "SC-002",
+      "module": "Supply Chain",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Multi-language import: What is the most effective way to uniformly update French names for a batch of materials?",
+      "question_zh": "多语导入：想要为一批物料统一更新其法语名称，最有效的方法是什么？",
+      "options": {
+        "A": {
+          "en": "In material management interface, edit each material one by one and fill in the multi-language tab.",
+          "zh": "在物料管理界面，逐个物料点击编辑，在多语标签页填写。"
+        },
+        "B": {
+          "en": "Use the 'Import' feature, maintain French names in the exported material data template, then import.",
+          "zh": "使用'导入'功能，在导出的物料数据模板中维护法语名称后再导入。"
+        },
+        "C": {
+          "en": "Contact the technical team to update directly in the backend database.",
+          "zh": "联系技术团队在后台数据库直接更新。"
+        },
+        "D": {
+          "en": "Cannot batch update multi-language names.",
+          "zh": "无法批量更新多语名称。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The import/export feature allows batch updating of multi-language material names via template.",
+      "explanation_zh": "使用导入功能，通过模板可以批量更新物料的多语言名称。"
+    },
+    {
+      "id": "SC-003",
+      "module": "Supply Chain",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Manual purchase inbound: On the mobile app (Store Connect APP), if the store receives goods from a supplier without creating a purchase order, which feature can be used to complete inbound?",
+      "question_zh": "手工采购入库：在移动端（门店通APP），如果门店没有做采购订单，直接收到了供应商的货物，可以通过什么功能完成入库？",
+      "options": {
+        "A": {
+          "en": "Purchase Order - Quick Receive",
+          "zh": "采购订单-快速收货"
+        },
+        "B": {
+          "en": "Inventory Management - Inbound/Outbound Order - New Purchase Inbound Order",
+          "zh": "库存管理-出入库单-新增采购入库单"
+        },
+        "C": {
+          "en": "Count Order - Count by received quantity",
+          "zh": "盘点单-按收货数量盘点"
+        },
+        "D": {
+          "en": "Damage Report - Reverse damage",
+          "zh": "报损单-反向报损"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Manual purchase inbound can be done through Inventory Management > Inbound/Outbound Order > New Purchase Inbound Order.",
+      "explanation_zh": "手工采购入库可通过库存管理-出入库单-新增采购入库单完成。"
+    },
+    {
+      "id": "SC-004",
+      "module": "Supply Chain",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When counting on mobile, how to quickly batch add counting materials by material category?",
+      "question_zh": "在移动端进行盘点时，如何快速按物料分类批量添加盘点物料？",
+      "options": {
+        "A": {
+          "en": "On the count order list page, use the 'import by category' feature.",
+          "zh": "在盘点单列表页，使用'按分类导入'功能。"
+        },
+        "B": {
+          "en": "After creating a new count order, the material selection interface supports batch adding by category.",
+          "zh": "新增盘点单后，在选择物料的界面支持按分类批量添加。"
+        },
+        "C": {
+          "en": "Cannot batch add; can only select one by one.",
+          "zh": "无法批量添加，只能逐一点选。"
+        },
+        "D": {
+          "en": "Need to pre-configure count category templates on PC.",
+          "zh": "需要在PC端提前配置好盘点分类模板。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "After creating a count order, the material selection screen allows batch adding materials by category.",
+      "explanation_zh": "新增盘点单后，选择物料界面支持按分类批量添加。"
+    },
+    {
+      "id": "SC-005",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In the 'Production Processing' module, when material inventory is insufficient for material requisition, on which dashboard can you generate purchase orders based on finished products?",
+      "question_zh": "在'生产加工'模块，发现准备领料时物料库存不足，可以直接在哪个看板界面根据产成品生成采购订单？",
+      "options": {
+        "A": {
+          "en": "Production Plan Dashboard",
+          "zh": "生产计划看板"
+        },
+        "B": {
+          "en": "Processing Dashboard",
+          "zh": "加工看板"
+        },
+        "C": {
+          "en": "Material Requisition Application Dashboard",
+          "zh": "领料申请看板"
+        },
+        "D": {
+          "en": "Inventory Warning Dashboard",
+          "zh": "库存预警看板"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The Processing Dashboard allows generating purchase orders based on finished product requirements when materials are insufficient.",
+      "explanation_zh": "加工看板可根据产成品需求在物料不足时直接生成采购订单。"
+    },
+    {
+      "id": "SC-006",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In 'direct delivery mode', if the 'Distribution Center Inspection' parameter is disabled and the store receives more goods than the purchase order quantity, how will the system handle it?",
+      "question_zh": "在'直运模式'下，如果【配送中心是否验货】参数关闭，门店收货数量多于采购订单数量时，系统会如何后续处理？",
+      "options": {
+        "A": {
+          "en": "The distribution center needs to handle this over-receipt difference.",
+          "zh": "配送中心需要处理这部分多收差异。"
+        },
+        "B": {
+          "en": "The system will automatically generate an accounts payable to the supplier.",
+          "zh": "系统会自动生成一笔应付账款给供应商。"
+        },
+        "C": {
+          "en": "Based on the store's received quantity, related document quantities will be updated without generating differences.",
+          "zh": "以门店收货数量为准，回更新相关单据数量，不产生差异。"
+        },
+        "D": {
+          "en": "Receiving is not allowed; the store must modify to under-receive.",
+          "zh": "不允许收货，门店必须修改为少收或少收。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "In direct delivery mode with inspection disabled, the system updates document quantities based on actual received quantity without generating differences.",
+      "explanation_zh": "直运模式下关闭验货，系统以门店实际收货数量为准更新单据，不产生差异。"
+    },
+    {
+      "id": "SC-007",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A DC purchaser reports that after selecting supplier A when creating a 'Purchase Order', the material list is empty when clicking add materials (although hundreds of ingredients exist in the material master). What should the implementation staff check first?",
+      "question_zh": "某配送中心（DC）的采购员反馈，在新增「采购订单」并选择了供货商 A 后，点击添加物料时，列表为空，无法搜索到任何物料（尽管物料档案中已存在数百种食材）。作为实施人员，你应首先排查下列哪项配置？",
+      "options": {
+        "A": {
+          "en": "Whether the material is bound to supplier A in 'Group View > Supply Chain > Supplier Management > Supplier Supply List'.",
+          "zh": "该物料是否在「集团视角 > 供应链 > 供货商管理 > 供货商供货清单」中与供货商 A 完成绑定。"
+        },
+        "B": {
+          "en": "Whether the supplier has enabled 'Allow purchase without agreement price' in 'Group View > Supply Chain > System Settings'.",
+          "zh": "该供货商是否在「集团视角 > 供应链 > 系统设置」中开启了「无协议价允许采购」。"
+        },
+        "C": {
+          "en": "Whether the material has order quantity restrictions in 'DC View > Purchase Management > Order Control'.",
+          "zh": "该物料是否在「配送中心视角 > 采购管理 > 订货控制」中被限制了订货数量。"
+        },
+        "D": {
+          "en": "Whether the supplier has bound a mobile phone number in 'External Account' and downloaded the APP.",
+          "zh": "该供货商是否已在「外部账号」中绑定了手机号并下载了 APP。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "Materials must be bound to the supplier in the Supplier Supply List before they can appear in purchase orders.",
+      "explanation_zh": "物料必须在供货商供货清单中与供货商绑定后，才能在采购订单中添加。"
+    },
+    {
+      "id": "SC-008",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "The group wants to directly generate supplier purchase orders (PO) from DC purchase requisition orders. Which delivery mode must the implementation staff select when configuring 'delivery rules' in the DC view to support this business?",
+      "question_zh": "集团希望由配送中心采购申请单直接生成供应商的采购订单（PO）。实施人员在配送中心视角下配置「配送规则」时，必须选择哪种运送模式才能支持此业务？",
+      "options": {
+        "A": {
+          "en": "Centralized Purchase Centralized Delivery",
+          "zh": "统采统配"
+        },
+        "B": {
+          "en": "Self-Purchase Direct Delivery",
+          "zh": "自采直配"
+        },
+        "C": {
+          "en": "Centralized Purchase Direct Transport",
+          "zh": "统采直运"
+        },
+        "D": {
+          "en": "No need to set rules",
+          "zh": "无需设置规则"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Self-Purchase Direct Delivery mode allows generating supplier POs directly from DC purchase requisitions.",
+      "explanation_zh": "自采直配模式支持从配送中心采购申请单直接生成供应商采购订单。"
+    },
+    {
+      "id": "SC-009",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A supplier reports using SMS verification code login in the 'RS Supplier' APP and correctly entering the invitation code provided by the implementation staff, but the APP still shows 'Not Bound'. As a senior implementation staff, what is the most likely missing operation?",
+      "question_zh": "供货商反馈已在「RS Supplier」APP 中使用了手机验证码登录，并正确输入了实施人员提供的邀请码，但 APP 界面依然显示「未绑定」。作为资深实施，你认为最可能遗漏的操作环节是？",
+      "options": {
+        "A": {
+          "en": "Did not open 'External Account' in the group view.",
+          "zh": "未在集团视角下开通「外部账号」。"
+        },
+        "B": {
+          "en": "Did not set 'Applicable Organization' to a specific store.",
+          "zh": "未将「适用组织」设置为特定的门店。"
+        },
+        "C": {
+          "en": "Did not complete the final step 'confirm binding in the backend' in the group backend.",
+          "zh": "未在集团后台完成最后一步「在后台确认绑定」。"
+        },
+        "D": {
+          "en": "The supplier downloaded the wrong APP version (should download cashier instead of supplier).",
+          "zh": "供货商下载了错误的 APP 版本（应下载收银端而非供货商端）。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "After the supplier logs in with the invitation code, the group backend must confirm the binding to complete the process.",
+      "explanation_zh": "供应商使用邀请码登录后，还需要在集团后台确认绑定才能完成整个流程。"
+    },
+    {
+      "id": "SC-010",
+      "module": "Supply Chain",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "A store received a batch of 'new seasoning' gifted by the manufacturer with an inbound unit price of 0. When the implementation staff tries to generate the corresponding 'inbound order', the system reports an error. To support such gift business, which parameter should be set to 'enabled' in 'Group View > Supply Chain > System Settings'?",
+      "question_zh": "某门店接收了一批厂家赠送的「新品调味料」，入库单价为 0。当实施人员在系统中尝试生成对应的「入库单」时，系统报错拦截。若要支持此类赠送业务，实施人员应在「集团视角 > 供应链 > 系统设置」中将哪项参数调整为「开启」？",
+      "options": {
+        "A": {
+          "en": "Whether inbound unit price can be 0",
+          "zh": "入库单价是否可为 0"
+        },
+        "B": {
+          "en": "Unit price取值 method for zero-cost outbound",
+          "zh": "零成本出库时单价取值方式"
+        },
+        "C": {
+          "en": "Finished product pricing method",
+          "zh": "产成品定价方式"
+        },
+        "D": {
+          "en": "Store auto-receive rules",
+          "zh": "门店自动收货规则"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "To support gifted items with zero price, enable 'Whether inbound unit price can be 0' in system settings.",
+      "explanation_zh": "支持赠品零价格入库，需要在系统设置中开启'入库单价是否可为0'。"
+    },
+    {
+      "id": "SC-011",
+      "module": "Supply Chain",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When a store purchases from the DC and gets an error when creating a 'Purchase Order', checking reveals no 'delivery agreement price' configured between the store and DC. If the implementation staff wants the error to disappear while requiring the store to purchase only with prices, how should the group view parameter be checked?",
+      "question_zh": "某门店在向配送中心采购，新增「采购订单」时，系统弹出错误提示，无法增加订单。经检查，该门店与配送中心之间尚未配置任何「配送协议价格」。实施人员若想让该报错消失，且门店必须在有价格的前提下才能采购，应如何检查集团视角的参数？",
+      "options": {
+        "A": {
+          "en": "Ensure 'Allow purchase without supplier agreement price' is set to 'enabled' — this removes the error but allows purchases without any price.",
+          "zh": "确保「无供货商协议价是否允许采购」设置为「开启」—— 但此设置无法确保门店有价格才能采购。"
+        },
+        "B": {
+          "en": "Ensure 'Allow purchase without delivery agreement price' is set to 'disabled' — this correctly requires a delivery agreement price for all purchases.",
+          "zh": "确保「无配送协议价是否允许采购」设置为「关闭」—— 只有关闭此开关，门店才必须在有配送协议价格的前提下才能采购。"
+        },
+        "C": {
+          "en": "Ensure 'Whether inbound unit price can be 0' is set to 'enabled'.",
+          "zh": "确保「入库单价是否可为 0」设置为「开启」。"
+        },
+        "D": {
+          "en": "Delete all 'order control' rules for this store.",
+          "zh": "删除该门店的所有「订货控制」规则。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "To enforce price requirement for purchases, disable 'Allow purchase without delivery agreement price'.",
+      "explanation_zh": "要求必须有配送协议价才能采购，需要将'无配送协议价是否允许采购'设置为关闭。"
+    },
+    {
+      "id": "MKT-001",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the 'Complete Profile for Gift' marketing campaign, which description is correct?",
+      "question_zh": "关于'完善资料送礼'类型的营销活动，以下描述正确的是？",
+      "options": {
+        "A": {
+          "en": "Users only need to complete any one selected profile item to receive the gift.",
+          "zh": "用户只需完善任意一项所选资料即可获得礼品。"
+        },
+        "B": {
+          "en": "Gifts can include points, coupons, and physical products.",
+          "zh": "可配置赠送礼品包括积分、优惠券和实物商品。"
+        },
+        "C": {
+          "en": "User scope can only select 'membership card plan', not 'membership card level'.",
+          "zh": "用户范围只能选择'会员卡方案'，不能选择'会员卡等级'。"
+        },
+        "D": {
+          "en": "Users need to complete all selected profiles before receiving the corresponding gift.",
+          "zh": "用户需完善所选的全部资料后才能获得对应礼品。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Users must complete all selected profile fields to receive the gift in this campaign type.",
+      "explanation_zh": "完善资料送礼活动要求用户完成所有选定的资料项后才能获得礼品。"
+    },
+    {
+      "id": "MKT-002",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In the 'Recruitment Store Settings' for 'Complete Profile for Gift' campaign, when selecting 'Organization Stores', what is the trigger condition?",
+      "question_zh": "在'完善资料送礼'活动的'招募门店设置'中，选择'组织内门店'时，触发条件是？",
+      "options": {
+        "A": {
+          "en": "Members must be assigned a recruitment store when registering and opening a card to trigger the campaign.",
+          "zh": "会员注册开卡时，必须有指定的招募门店归属才能触发活动。"
+        },
+        "B": {
+          "en": "Members can trigger by simply selecting any available store during registration, regardless of recruitment store setup.",
+          "zh": "会员注册时只需任意选择一个门店即可触发，不要求该门店是招募门店。"
+        },
+        "C": {
+          "en": "Members automatically trigger the campaign when registering via the online self-service channel.",
+          "zh": "会员通过线上自助渠道完成注册时自动触发活动。"
+        },
+        "D": {
+          "en": "Members can trigger the campaign after making a purchase at any store location.",
+          "zh": "会员在任意门店完成一笔消费交易后即可触发活动。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "For organization stores, members must have a recruitment store when registering to trigger the campaign.",
+      "explanation_zh": "选择组织内门店时，会员注册开卡时必须指定招募门店才能触发活动。"
+    },
+    {
+      "id": "MKT-003",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When creating an 'Upgrade Gift' marketing campaign, what is the purpose of the 'Mini Program Message Notification' field?",
+      "question_zh": "创建'升级送礼'类型营销活动时，'小程序消息通知'栏的作用是？",
+      "options": {
+        "A": {
+          "en": "Set up campaign notifications for administrators.",
+          "zh": "设置给管理员发送活动通知。"
+        },
+        "B": {
+          "en": "Set which mini program will send message notifications to members.",
+          "zh": "设置使用哪个小程序时会有消息通知给会员。"
+        },
+        "C": {
+          "en": "Configure the campaign to display synchronously on all mini program platforms.",
+          "zh": "配置活动在所有小程序平台同步显示。"
+        },
+        "D": {
+          "en": "Set the message notification template and sending time.",
+          "zh": "设置消息通知的模板和发送时间。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "This field specifies which mini program will send upgrade gift notifications to members.",
+      "explanation_zh": "该字段用于指定哪个小程序会向会员发送升级送礼消息通知。"
+    },
+    {
+      "id": "MKT-004",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the 'Birthday Gift' marketing campaign, which description is INCORRECT?",
+      "question_zh": "关于'生日赠送'类型营销活动，以下错误的是？",
+      "options": {
+        "A": {
+          "en": "Gift field can configure points, coupons, and greeting messages.",
+          "zh": "赠送礼品栏可配置积分、优惠券和祝福语。"
+        },
+        "B": {
+          "en": "Need to configure 'advance gift days'.",
+          "zh": "需配置'提前赠送天数'。"
+        },
+        "C": {
+          "en": "Gifts will be issued on the member's birthday.",
+          "zh": "礼品会在会员生日当天发放。"
+        },
+        "D": {
+          "en": "Need to select 'issuance rules'.",
+          "zh": "需要选择'发放规则'。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Birthday gifts are issued based on the 'advance gift days' setting, not necessarily on the exact birthday.",
+      "explanation_zh": "生日赠送根据提前赠送天数设置发放，不一定在生日当天。"
+    },
+    {
+      "id": "MKT-005",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "When creating a 'Points Redemption' marketing campaign, what page will clicking the card navigate to?",
+      "question_zh": "创建'积分兑换'类型营销活动时，点击卡片会跳转到什么页面？",
+      "options": {
+        "A": {
+          "en": "Member Management Page",
+          "zh": "会员管理页面"
+        },
+        "B": {
+          "en": "Points Mall Page",
+          "zh": "积分商城页面"
+        },
+        "C": {
+          "en": "Product Management Page",
+          "zh": "商品管理页面"
+        },
+        "D": {
+          "en": "Marketing Campaign List Page",
+          "zh": "营销活动列表页面"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Points Redemption campaigns redirect to the Points Mall page.",
+      "explanation_zh": "积分兑换活动点击卡片会跳转到积分商城页面。"
+    },
+    {
+      "id": "MKT-006",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When creating a new product in the Points Mall, if selecting 'coupon' type, which field does NOT need to be set?",
+      "question_zh": "在积分商城'新建商品'时，如果选择'优惠券'类型，不需要设置的是？",
+      "options": {
+        "A": {
+          "en": "Product type",
+          "zh": "商品类型"
+        },
+        "B": {
+          "en": "Valid and expiration time",
+          "zh": "生效和失效时间"
+        },
+        "C": {
+          "en": "Physical product size specifications",
+          "zh": "实物商品的尺寸规格"
+        },
+        "D": {
+          "en": "Total inventory and points price",
+          "zh": "总库存和积分售价"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Coupon type products do not require physical size specifications.",
+      "explanation_zh": "优惠券类型的商品不需要设置实物尺寸规格。"
+    },
+    {
+      "id": "MKT-007",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the 'one-time issuance' method for 'campaign issuance' type coupon packages, which is correct?",
+      "question_zh": "关于'活动发放'类型券包的'一次性发放'方式，以下正确的是？",
+      "options": {
+        "A": {
+          "en": "Need to set periodic issuance time and frequency.",
+          "zh": "需要设置周期性发放的时间和次数。"
+        },
+        "B": {
+          "en": "'Gift name' field only needs to specify a coupon and enter the gift quantity.",
+          "zh": "'礼品名称'栏只需指定某个券，输入礼品个数。"
+        },
+        "C": {
+          "en": "Relative validity period does not support 'effective immediately' option.",
+          "zh": "相对有效期不支持'立即生效'选项。"
+        },
+        "D": {
+          "en": "Must configure different coupon information for first issuance and subsequent issuances.",
+          "zh": "必须配置首次发放与后续不同的优惠券信息。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "For one-time issuance, specify the coupon name and quantity in the gift name field.",
+      "explanation_zh": "一次性发放时，在礼品名称栏指定券并输入数量即可。"
+    },
+    {
+      "id": "MKT-008",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding 'paid coupon packages', which description is INCORRECT?",
+      "question_zh": "关于'付费券包'类型，以下错误的是？",
+      "options": {
+        "A": {
+          "en": "'Sales location' can select 'coupon package mall' and 'purchase with order', and at least one must be selected.",
+          "zh": "'售卖位置'栏可选'券包商城'和'随单购买'，且必须至少选择一项。"
+        },
+        "B": {
+          "en": "'Available stores' field can only select stores, not organizations.",
+          "zh": "'可售卖店铺'栏只能选择门店，不能选择组织。"
+        },
+        "C": {
+          "en": "Advanced settings can configure 'redirect after successful order' address.",
+          "zh": "高级设置部分可配置'下单成功的跳转'地址。"
+        },
+        "D": {
+          "en": "Can configure 'auto refund on expiration' option.",
+          "zh": "可配置'过期自动退'选项。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The 'Available stores' field supports selecting both individual stores and organizations.",
+      "explanation_zh": "可售卖店铺栏既可以选择门店，也可以选择组织。"
+    },
+    {
+      "id": "MKT-009",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Which operation is NOT available on the coupon package details page?",
+      "question_zh": "在券包详情页面，可以进行的操作不包括？",
+      "options": {
+        "A": {
+          "en": "View coupon package parameter details",
+          "zh": "查看券包的参数详情"
+        },
+        "B": {
+          "en": "View total issued quantity and total redeemed quantity",
+          "zh": "查看发出数量和核销总数量"
+        },
+        "C": {
+          "en": "Directly modify the coupon package inventory quantity",
+          "zh": "直接修改券包的库存数量"
+        },
+        "D": {
+          "en": "Issue coupon packages to members through the 'gift coupon package' feature",
+          "zh": "通过'赠送券包'功能给会员发放券包"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Coupon package inventory cannot be directly modified on the details page.",
+      "explanation_zh": "券包库存数量不能在详情页面直接修改。"
+    },
+    {
+      "id": "MKT-010",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding credit account customer management, which description is correct?",
+      "question_zh": "关于挂账客户管理，以下正确的是？",
+      "options": {
+        "A": {
+          "en": "Can only add enterprise customers, not individual customers.",
+          "zh": "只能新增企业客户，不能新增个人客户。"
+        },
+        "B": {
+          "en": "Credit rules cannot set default consumption discounts.",
+          "zh": "挂账规则中不能设置默认消费折扣。"
+        },
+        "C": {
+          "en": "When adding a credit customer, need to fill in customer name, code, ID, contact phone, etc.",
+          "zh": "新增挂账客户时需要填写客户名称、编码、ID、联系电话等信息。"
+        },
+        "D": {
+          "en": "Credit customers can only repay through cash.",
+          "zh": "挂账客户还款时只能通过现金方式还款。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Adding credit customers requires complete information including name, code, ID, and contact phone.",
+      "explanation_zh": "新增挂账客户需要填写完整的客户信息包括名称、编码、ID和联系电话。"
+    },
+    {
+      "id": "MKT-011",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When creating a credit repayment order, what is the operation in the 'write off credit consumption details' field?",
+      "question_zh": "创建挂账还款单时，'核销挂账消费明细'栏的操作是？",
+      "options": {
+        "A": {
+          "en": "System automatically brings out all unpaid bills, no manual selection needed.",
+          "zh": "系统自动带出所有未还款账单，无需手动选择。"
+        },
+        "B": {
+          "en": "Need to manually click 'add consumption bill' to select corresponding bill information.",
+          "zh": "需要手动点击'新增消费账单'选择对应的账单信息。"
+        },
+        "C": {
+          "en": "Can only write off consumption bills within the last 30 days.",
+          "zh": "只能核销最近30天内的消费账单。"
+        },
+        "D": {
+          "en": "Repayment amount must equal the original bill amount, no discounts allowed.",
+          "zh": "还款金额必须等于账单原金额，不能有折扣。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Users must manually add consumption bills to select which bills to write off.",
+      "explanation_zh": "需要手动点击新增消费账单来选择要核销的账单。"
+    },
+    {
+      "id": "MKT-012",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding store 'operation status' and 'business status', which description is INCORRECT?",
+      "question_zh": "关于门店的'经营状态'和'营业状态'，以下描述错误的是？",
+      "options": {
+        "A": {
+          "en": "Operation status includes: Preparing, Pending Opening, Operating, Closed.",
+          "zh": "经营状态包括：筹备中、待开业、营业中、已闭店。"
+        },
+        "B": {
+          "en": "Business status is only available and modifiable when operation status is 'Operating'.",
+          "zh": "营业状态只有在经营状态为'营业中'时才可用且可修改。"
+        },
+        "C": {
+          "en": "When business status is set to 'Rest', POS cashier will completely stop working.",
+          "zh": "营业状态设置为'休息'时，POS收银将完全停止使用。"
+        },
+        "D": {
+          "en": "After operation status is set to 'Closed', the store will no longer appear in the online ordering list.",
+          "zh": "经营状态设置为'已闭店'后，线上点餐列表不再展示该门店。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "When business status is set to 'Rest', POS is not completely stopped; it affects online ordering but not necessarily POS operations.",
+      "explanation_zh": "营业状态设置为休息时，POS收银不会完全停止，主要影响线上点餐。"
+    },
+    {
+      "id": "MKT-013",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "On the marketing campaign creation guide page, which category is NOT included in the campaign type classification?",
+      "question_zh": "在营销活动创建引导页面，活动类型归类不包括以下哪一类？",
+      "options": {
+        "A": {
+          "en": "Member Acquisition",
+          "zh": "会员拉新"
+        },
+        "B": {
+          "en": "Promote Repurchase",
+          "zh": "促进复购"
+        },
+        "C": {
+          "en": "Interactive Marketing",
+          "zh": "互动营销"
+        },
+        "D": {
+          "en": "Supplier Management",
+          "zh": "供应商管理"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Supplier management is not a marketing campaign type; it belongs to supply chain module.",
+      "explanation_zh": "供应商管理不属于营销活动类型，属于供应链模块。"
+    },
+    {
+      "id": "MKT-014",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the main application of 'EOD time', which is correct?",
+      "question_zh": "关于'日结时间'的主要应用，以下正确的是？",
+      "options": {
+        "A": {
+          "en": "Mainly applied to POS EOD operation, determining the generation time of EOD reports.",
+          "zh": "主要应用于POS端日结操作，决定日结报表的生成时间。"
+        },
+        "B": {
+          "en": "Determines the store's business start and end time.",
+          "zh": "决定门店的营业开始和结束时间。"
+        },
+        "C": {
+          "en": "When POS EOD is set to auto EOD, it will automatically perform EOD at this time.",
+          "zh": "当POS日结为自动日结时，会按照该时间自动做日结。"
+        },
+        "D": {
+          "en": "Affects the settlement cycle of member points.",
+          "zh": "影响会员积分的结算周期。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Auto EOD will execute at the configured EOD time automatically.",
+      "explanation_zh": "自动日结会按照设置的日结时间自动执行。"
+    },
+    {
+      "id": "MKT-015",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the batch modify store information feature provided by the system, which CANNOT be batch modified?",
+      "question_zh": "关于系统提供的批量修改门店信息功能，不能批量修改的是？",
+      "options": {
+        "A": {
+          "en": "Basic information",
+          "zh": "基础信息"
+        },
+        "B": {
+          "en": "Location information",
+          "zh": "位置信息"
+        },
+        "C": {
+          "en": "Individual employee shift information",
+          "zh": "单个员工的排班信息"
+        },
+        "D": {
+          "en": "Food safety related materials",
+          "zh": "食品安全相关资料"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Individual employee shift information cannot be batch modified; other store-level information can be.",
+      "explanation_zh": "单个员工的排班信息不能批量修改，其他门店级别的信息可以。"
+    },
+    {
+      "id": "MKT-016",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When creating a 'periodic issuance' type coupon package, if setting 'first issuance different from subsequent', how should it be configured?",
+      "question_zh": "创建'周期性发放'类型券包时，如果设置'首次发放与后续不同'，需要如何配置？",
+      "options": {
+        "A": {
+          "en": "Only need to set the first issuance coupon information.",
+          "zh": "只需设置首次发放的优惠券信息。"
+        },
+        "B": {
+          "en": "Only need to set the subsequent issuance coupon information.",
+          "zh": "只需设置后续发放的优惠券信息。"
+        },
+        "C": {
+          "en": "Need to separately set the first issuance and subsequent issuance coupon information.",
+          "zh": "需要分别设置首次发放和后续发放的优惠券信息。"
+        },
+        "D": {
+          "en": "System will handle it automatically, no special configuration needed.",
+          "zh": "系统会自动处理，无需特殊配置。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "When enabling this option, both first and subsequent issuance coupon information must be configured separately.",
+      "explanation_zh": "开启此选项后，需要分别配置首次和后续发放的优惠券信息。"
+    },
+    {
+      "id": "MKT-017",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When adjusting inventory in the Points Mall, which operation can be performed?",
+      "question_zh": "在积分商城操作库存调整时，可以进行的操作是？",
+      "options": {
+        "A": {
+          "en": "Can only increase inventory, not decrease.",
+          "zh": "只能增加库存，不能减少库存。"
+        },
+        "B": {
+          "en": "Can only decrease inventory, not increase.",
+          "zh": "只能减少库存，不能增加库存。"
+        },
+        "C": {
+          "en": "Can perform both increase and decrease inventory operations.",
+          "zh": "可以进行增加或减少库存的操作。"
+        },
+        "D": {
+          "en": "Inventory quantity can only be calculated automatically by the system, cannot be manually adjusted.",
+          "zh": "库存数量只能由系统自动计算，不能手动调整。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Points Mall inventory supports both increase and decrease adjustments.",
+      "explanation_zh": "积分商城库存支持增加和减少两种调整操作。"
+    },
+    {
+      "id": "MKT-018",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the batch generate coupon code feature, which is correct?",
+      "question_zh": "关于批量生成券码功能，以下正确的是？",
+      "options": {
+        "A": {
+          "en": "Can only generate a fixed quantity of 100 coupon codes.",
+          "zh": "只能生成固定数量的100个券码。"
+        },
+        "B": {
+          "en": "Generated coupon codes can only be used on offline POS.",
+          "zh": "生成的券码只能在线下POS端使用。"
+        },
+        "C": {
+          "en": "Need to input validity period and coupon generation quantity.",
+          "zh": "需要输入有效期和制券数量。"
+        },
+        "D": {
+          "en": "Generated coupon codes can only be used by internal group employees.",
+          "zh": "生成的券码只能由集团内部员工使用。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Batch coupon code generation requires setting validity period and quantity.",
+      "explanation_zh": "批量生成券码需要设置有效期和制券数量。"
+    },
+    {
+      "id": "MKT-019",
+      "module": "Marketing",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "In the recruitment store settings for 'Complete Profile for Gift' campaign, when selecting 'No Store', what is the trigger condition?",
+      "question_zh": "在'完善资料送礼'活动的招募门店设置中，选择'无门店'时的触发条件是？",
+      "options": {
+        "A": {
+          "en": "Any member registering at any store can trigger.",
+          "zh": "会员在任何门店注册都可触发。"
+        },
+        "B": {
+          "en": "Requires the member to make a purchase transaction at a designated physical store before triggering.",
+          "zh": "需要会员到指定实体门店完成一笔消费交易后才能触发。"
+        },
+        "C": {
+          "en": "The trigger condition is met only when the recruitment store is set to 'online self-service'.",
+          "zh": "需招募门店为「线上自助」时符合触发条件。"
+        },
+        "D": {
+          "en": "Requires the member to complete a profile binding (bind membership card to store) before triggering.",
+          "zh": "需要会员完成资料绑定（将会员卡绑定到门店）后才能触发。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "When selecting 'No Store', the trigger condition is that the recruitment store must be set to 'online self-service'.",
+      "explanation_zh": "选择无门店时，需要招募门店设置为'线上自助'才能触发。"
+    },
+    {
+      "id": "MKT-020",
+      "module": "Marketing",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding store business status, which description is correct?",
+      "question_zh": "关于门店营业状态，以下描述正确的是？",
+      "options": {
+        "A": {
+          "en": "When business status is set to 'Rest', POS cashier completely stops.",
+          "zh": "营业状态设置为'休息'时，POS收银完全停止。"
+        },
+        "B": {
+          "en": "Business status only takes effect for online restaurants; POS is not affected.",
+          "zh": "营业状态只有线上餐厅才会生效，POS不受影响。"
+        },
+        "C": {
+          "en": "Business status can be set to four states: 'Operating', 'Busy', 'Paused', 'Rest'.",
+          "zh": "营业状态可以设置为'营业'、'繁忙'、'暂停'、'休息'四种状态。"
+        },
+        "D": {
+          "en": "Business status can also be set when operation status is 'Preparing'.",
+          "zh": "经营状态为'筹备中'时也可以设置营业状态。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Business status only affects online ordering; POS operations are not restricted by this setting.",
+      "explanation_zh": "营业状态只影响线上餐厅，POS收银操作不受影响。"
+    },
+    {
+      "id": "POS-001",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "A restaurant wants the order of dish flavor/practice displayed on POS after customer scans to order, to follow the sequence the customer added on the mobile end. How should the implementation consultant configure this?",
+      "question_zh": "餐厅希望顾客扫码下单后，POS上显示的菜品口味做法顺序，能按照顾客在手机端添加的先后顺序排列和打印。实施顾问需要如何配置？",
+      "options": {
+        "A": {
+          "en": "On POS, the cashier manually adjusts the order of dishes in the cart.",
+          "zh": "在POS端，收银员手动调整购物车中菜品的顺序。"
+        },
+        "B": {
+          "en": "In BO 'Restaurant Management - Business Parameters', enable 'flavor/practice group order follows selection order' parameter.",
+          "zh": "在后台'餐厅管理-业务参数'中，开启'口味做法组顺序按点选顺序显示'参数。"
+        },
+        "C": {
+          "en": "In dish management, set a fixed sort order for each flavor/practice group.",
+          "zh": "在菜品管理里，为每个口味做法组设置固定排序。"
+        },
+        "D": {
+          "en": "This cannot be configured; the system defaults to alphabetical order.",
+          "zh": "此功能无法配置，系统默认按字母顺序排列。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Enable the parameter 'flavor/practice group order follows selection order' in BO business parameters.",
+      "explanation_zh": "在BO后台业务参数中开启'口味做法组顺序按点选顺序显示'。"
+    },
+    {
+      "id": "POS-002",
+      "module": "POS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When deploying POS hardware, which of the following network cable connection methods is correct?",
+      "question_zh": "在部署POS硬件时，以下哪种网线连接方式是正确的？",
+      "options": {
+        "A": {
+          "en": "Connect all devices to different routers for redundancy.",
+          "zh": "将所有设备连接到不同路由器以实现冗余。"
+        },
+        "B": {
+          "en": "All POS devices must be connected to the same switch/router.",
+          "zh": "所有POS设备必须连接到同一个交换机/路由器。"
+        },
+        "C": {
+          "en": "Only the main POS needs to be wired; others can use Wi-Fi.",
+          "zh": "只有主POS需要有线连接，其他可以使用Wi-Fi。"
+        },
+        "D": {
+          "en": "Printer connections can use any available network port.",
+          "zh": "打印机连接可以使用任何可用的网络端口。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "All POS devices must be on the same local network (same switch/router) for proper communication.",
+      "explanation_zh": "所有POS设备必须在同一局域网内（同一交换机/路由器）才能正常通信。"
+    },
+    {
+      "id": "POS-003",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the POS 'clear data' operation for training data, what is the correct password format?",
+      "question_zh": "关于POS'清除数据'操作（清除练习数据），正确的密码格式是？",
+      "options": {
+        "A": {
+          "en": "Always 'RESTO123'",
+          "zh": "固定为'RESTO123'"
+        },
+        "B": {
+          "en": "Current date + 'Resto' (e.g., 20260313Resto)",
+          "zh": "当前日期+'Resto'（如20260313Resto）"
+        },
+        "C": {
+          "en": "Store manager PIN code",
+          "zh": "店长PIN码"
+        },
+        "D": {
+          "en": "No password required",
+          "zh": "无需密码"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The clear data password format is current date + 'Resto' (e.g., 20260313Resto).",
+      "explanation_zh": "清除数据密码格式为当前日期+Resto（如20260313Resto）。"
+    },
+    {
+      "id": "POS-004",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When setting up the store organization structure in BO, what is the most direct standard operation path?",
+      "question_zh": "在BO后台建立门店组织架构时，最直接的标准操作路径是？",
+      "options": {
+        "A": {
+          "en": "Must create 'Branch' first, then 'Region', then create store under region.",
+          "zh": "必须先创建'分公司'，再创建'区域'，最后才能在区域下级新建门店。"
+        },
+        "B": {
+          "en": "Directly add store under the top-level 'Group'.",
+          "zh": "直接在最高层级的'集团'下级新增门店。"
+        },
+        "C": {
+          "en": "Store accounts and hierarchy are auto-generated; no manual configuration needed.",
+          "zh": "门店账号和层级由系统后台自动生成，实施人员无需手动干预。"
+        },
+        "D": {
+          "en": "Under merchant's 'Brand', directly add store.",
+          "zh": "在商户的'品牌'下级，直接新增门店。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "The standard path is to add store directly under the merchant's Brand level.",
+      "explanation_zh": "标准操作路径是在商户的'品牌'下级直接新增门店。"
+    },
+    {
+      "id": "POS-005",
+      "module": "POS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When deploying a Windows touchscreen POS, what is the correct virtual keyboard setup?",
+      "question_zh": "在部署Windows触摸屏收银机时，关于'虚拟键盘'的设置，正确的操作指南是？",
+      "options": {
+        "A": {
+          "en": "Must enable both POS built-in virtual keyboard and Windows OS touch keyboard.",
+          "zh": "必须同时开启POS系统自带的虚拟键盘和Windows操作系统的触摸键盘。"
+        },
+        "B": {
+          "en": "In system settings, enable 'disable virtual keyboard' to disable POS built-in keyboard and use OS touch keyboard.",
+          "zh": "在系统设置中开启'禁用虚拟键盘'，即禁用POS自带的虚拟键盘，转而使用操作系统的触摸键盘。"
+        },
+        "C": {
+          "en": "Force store to purchase external physical keyboard as touchscreen does not support soft keyboard.",
+          "zh": "强制要求门店自费购买外接物理键盘，因为触摸屏不支持任何软键盘。"
+        },
+        "D": {
+          "en": "Absolutely cannot use Windows OS touch keyboard; must rely on POS built-in keyboard.",
+          "zh": "绝对不能使用Windows操作系统的触摸键盘，只能依赖POS内置键盘。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Disable the POS built-in virtual keyboard and use the Windows OS touch keyboard for better input experience.",
+      "explanation_zh": "禁用POS自带虚拟键盘，使用Windows系统触摸键盘以获得更好的输入体验。"
+    },
+    {
+      "id": "POS-006",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "For a 100sqm casual dining restaurant with table service needs, what is the most critical mistake when setting 'dining mode' in POS?",
+      "question_zh": "这家100平米的街边正餐馆有明确的桌台服务需求，实施人员在POS端设置'用餐模式'时，最容易犯的致命错误是？",
+      "options": {
+        "A": {
+          "en": "Correctly set dining mode to 'Dine-in (Table Mode)' for customer ordering and seating.",
+          "zh": "正确地将用餐模式设置为'正餐（桌台模式）'，以满足顾客点餐、落座的场景。"
+        },
+        "B": {
+          "en": "To simplify the cashier interface, arbitrarily set dining mode to 'Fast Food', making it impossible to manage table opening and seating later.",
+          "zh": "为了让收银界面看起来更精简，擅自将用餐模式设置为'快餐'，导致门店后续根本无法管理桌台开台和落座。"
+        },
+        "C": {
+          "en": "Enable 'delayed send to kitchen' feature in general settings.",
+          "zh": "在通用设置中开启了'延迟送厨'功能。"
+        },
+        "D": {
+          "en": "Enable both 'auto print receipt' and 'auto print kitchen ticket' in general settings.",
+          "zh": "在通用设置中同时开启了'自动打印结账单'和'自动打印厨房制作单'以提升效率。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Setting to Fast Food mode for a table-service restaurant will prevent table management operations.",
+      "explanation_zh": "正餐餐厅设置为快餐模式会导致无法管理桌台开台和落座。"
+    },
+    {
+      "id": "POS-007",
+      "module": "POS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Before official opening, why must POS perform 'order and test print' action?",
+      "question_zh": "早班收银员开店时，为什么必须在客人到来前进行'点单并测试打印'的动作？",
+      "options": {
+        "A": {
+          "en": "To consume expired receipt paper and prevent paper jams.",
+          "zh": "为了消耗过期的打印纸，防止卡纸。"
+        },
+        "B": {
+          "en": "No need to test; system will auto-connect and print when customers order. Testing is a waste of paper.",
+          "zh": "没必要测试，等客人下单时系统会自动连网打印，提前测试纯属浪费纸张。"
+        },
+        "C": {
+          "en": "To troubleshoot network or IP conflicts, preventing the situation where kitchen printers fail during peak hours, avoiding customer complaints.",
+          "zh": "为了排查网络或IP冲突，防止高峰期客满时才发现后厨打印机不出单，避免客诉。"
+        },
+        "D": {
+          "en": "Only to record the first day's revenue for shift handover.",
+          "zh": "只是为了记录当天的第一笔营业额，便于交班对账。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Test printing before opening helps identify network or printer issues before peak hours.",
+      "explanation_zh": "开店前测试打印可排查网络或打印机问题，避免高峰期出现问题导致客诉。"
+    },
+    {
+      "id": "POS-008",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the 'reserve fund' entry operation, how should the implementation staff guide the store to set up?",
+      "question_zh": "关于'备用金'的录入操作，实施人员应当如何指导门店设置？",
+      "options": {
+        "A": {
+          "en": "System will auto-inherit last night's remaining cash as reserve fund; cashiers can start directly without manual entry.",
+          "zh": "系统会自动继承昨晚剩下的现金作为备用金，收银员可以直接开始营业，无需手动录入。"
+        },
+        "B": {
+          "en": "Only need to set reserve fund in settings when refunds occur.",
+          "zh": "只有发生退款时才需要去设置里录入备用金。"
+        },
+        "C": {
+          "en": "Must enable 'prompt when reserve fund not entered' in POS settings, forcing cashiers to count and enter, preventing disputes during evening shift settlement.",
+          "zh": "必须在POS设置中开启'未录入备用金时登录提示'，强制收银员清点并录入，防止晚班结算短款时收银员推诿。"
+        },
+        "D": {
+          "en": "Reserve fund is automatically deducted from the day's revenue; no operation needed on POS.",
+          "zh": "备用金直接从当天的营业额中自动扣除，不需要在POS上做任何操作。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Enable the prompt to force cashiers to enter reserve fund, ensuring accurate cash tracking.",
+      "explanation_zh": "开启未录入备用金提示，强制收银员清点录入，防止结算纠纷。"
+    },
+    {
+      "id": "POS-009",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A guest voids a 'clay pot chicken soup' dish, and the cashier selects 'void and damage'. What happens to the dish inventory?",
+      "question_zh": "客人退了一道'瓦罐鸡汤'，收银员在操作时选择了'退菜和报损'。此时该菜品的库存会发生什么变化？",
+      "options": {
+        "A": {
+          "en": "System auto-identifies the void operation and adds 1 back to dish inventory for next customer.",
+          "zh": "系统会自动识别退菜操作，将该菜品的库存数量加1，供下一位客人点单。"
+        },
+        "B": {
+          "en": "The entire order inventory is zeroed out, requiring re-counting.",
+          "zh": "整个订单的库存都会被清零，需要重新盘点。"
+        },
+        "C": {
+          "en": "KDS will immediately alarm, requiring chefs to make a replacement to restore inventory.",
+          "zh": "后厨KDS会立刻报警，要求厨师重新做一份补充库存。"
+        },
+        "D": {
+          "en": "The dish sold-out quantity will not change; the dish is marked as damaged and will not restore to sellable inventory.",
+          "zh": "该商品原有沽清数量不会变更，菜品被标记为报损，不会恢复为可售库存。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Void and damage marks the item as damaged; inventory is not restored to sellable stock.",
+      "explanation_zh": "退菜报损后，菜品被标记为报损，不会恢复为可售库存。"
+    },
+    {
+      "id": "POS-010",
+      "module": "POS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When performing 'open table' operation, regarding the 'number of diners' entry rule, which statement is correct?",
+      "question_zh": "服务员在进行'开台'操作时，关于'就餐人数'的录入规则，以下说法正确的是？",
+      "options": {
+        "A": {
+          "en": "To improve table turnover, servers can default to '1 person' for fastest opening.",
+          "zh": "为了提升翻台率，服务员可以默认全部输入'1人'，这样开台最省时间。"
+        },
+        "B": {
+          "en": "Number of diners only affects lobby queue; has no impact on backend financial data.",
+          "zh": "就餐人数只影响大堂叫号，对系统后端的财务数据毫无影响。"
+        },
+        "C": {
+          "en": "Must enter accurate number of diners, as this is the core denominator for calculating 'average check' and 'table turnover rate'.",
+          "zh": "必须强制输入准确的就餐人数，因为这是计算'客单价'和'翻桌率'的核心分母。"
+        },
+        "D": {
+          "en": "Only private rooms need diner count; lobby tables can skip this step.",
+          "zh": "只有包厢才需要输入人数，大厅散座可以跳过此步骤。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Accurate diner count is essential for calculating average check and table turnover rate.",
+      "explanation_zh": "准确的就餐人数是计算客单价和翻桌率的核心数据。"
+    },
+    {
+      "id": "POS-011",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "In what business scenario should the cashier use the supplementary order flag feature?",
+      "question_zh": "在什么业务场景下，收银员应当使用补菜下单标志功能？",
+      "options": {
+        "A": {
+          "en": "When dishes are sold out and need to notify kitchen to restock.",
+          "zh": "菜品卖完了，需要通知后厨补货时使用。"
+        },
+        "B": {
+          "en": "When guests think the portion is too small and request free supplementary dishes from kitchen.",
+          "zh": "客人觉得菜量太少，要求后厨免费补菜时使用。"
+        },
+        "C": {
+          "en": "When a previously ordered dish was missed and needs to be added urgently to kitchen.",
+          "zh": "发现之前的订单漏点了一道菜，需要后厨立刻加急做一份时使用。"
+        },
+        "D": {
+          "en": "When dishes are directly handed to guests (e.g., grab-and-go drinks), only need to record for billing without printing kitchen ticket again.",
+          "zh": "菜品已经直接拿给客人了（如随手拿的饮料），此时只需记账防止结账漏算，且不需要后厨再次打印制作单。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Supplementary order flag is for items already served but need to be recorded for billing without re-printing kitchen ticket.",
+      "explanation_zh": "补菜下单标志用于已直接给客人的菜品，只需记账防止漏算，不重新打印厨房单。"
+    },
+    {
+      "id": "POS-012",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A guest complains about slow service, and the server wants to use the expedite dish feature. In which situation is expediting NOT possible?",
+      "question_zh": "顾客嫌上菜太慢，服务员想要使用催菜功能。以下哪种情况是无法进行催菜操作的？",
+      "options": {
+        "A": {
+          "en": "The dish was just added to the cart but not yet submitted to the kitchen.",
+          "zh": "该菜品刚刚在购物车中点好，还未点击下单传输到后厨。"
+        },
+        "B": {
+          "en": "The dish is a cold dish or beverage.",
+          "zh": "该菜品是冷菜或酒水。"
+        },
+        "C": {
+          "en": "The order has already been paid.",
+          "zh": "订单刚刚完成了结账支付。"
+        },
+        "D": {
+          "en": "The dish has been set to wait to call status.",
+          "zh": "菜品已经被设置为等叫状态。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "Expedite can only be used after dishes are submitted to the kitchen, not when still in the cart.",
+      "explanation_zh": "催菜功能只能在菜品下单到后厨后使用，还在购物车中时无法催菜。"
+    },
+    {
+      "id": "POS-013",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When the server selects dishes and clicks wait to call, the system prompts no dishes to wait to call. What setting should the implementation staff check?",
+      "question_zh": "服务员选中菜品点击等叫时，系统却提示没有需要等叫的菜品。实施人员应排查哪个设置项？",
+      "options": {
+        "A": {
+          "en": "The enable wait to call feature switch in store backend is not turned on.",
+          "zh": "门店后台的启用等叫功能开关未打开。"
+        },
+        "B": {
+          "en": "The dish does not have a corresponding production department configured.",
+          "zh": "该菜品没有配置对应的出品部门。"
+        },
+        "C": {
+          "en": "The POS network for this table is disconnected.",
+          "zh": "该桌台的POS机网络已断开。"
+        },
+        "D": {
+          "en": "The dish inventory has been auto sold out.",
+          "zh": "该菜品的库存已经被自动沽清。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Dishes must have a production department configured to use the wait to call feature.",
+      "explanation_zh": "菜品必须配置出品部门才能使用等叫功能。"
+    },
+    {
+      "id": "POS-014",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A server sets a delayed send to kitchen (30 minutes later) for a regular customer pre-order. If the guest arrives 10 minutes early, what is the correct handling?",
+      "question_zh": "服务员为提前预订的熟客设置了延迟送厨（30分钟后下单）。如果客人提前10分钟到了，正确的处理方式是？",
+      "options": {
+        "A": {
+          "en": "Must delete all original dishes, re-order and immediately pay.",
+          "zh": "必须把原来的菜品全部删除，重新点单并立刻结账。"
+        },
+        "B": {
+          "en": "Can only make the guest wait 10 minutes, as the system absolutely cannot change once delayed is set.",
+          "zh": "只能让客人干等10分钟，因为系统一旦设置延迟就绝对无法更改。"
+        },
+        "C": {
+          "en": "Find the manager to enter password and modify the server system time in the backend.",
+          "zh": "找店长输入密码，进入后台修改服务器的系统时间。"
+        },
+        "D": {
+          "en": "Directly click the order button on the order page to manually cancel the delayed status and send immediately.",
+          "zh": "直接在订单页点击下单按钮，手动取消延迟状态并立刻出单。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Clicking the order button on the order page will cancel the delayed status and send to kitchen immediately.",
+      "explanation_zh": "在订单页点击下单按钮可手动取消延迟状态并立刻出单。"
+    },
+    {
+      "id": "POS-015",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the risk control logic of discount/promotion and modify dish after payment (void order), what is the standard practice?",
+      "question_zh": "关于打折/优惠和结账后修改菜品（退单）的风控逻辑，规范的做法是？",
+      "options": {
+        "A": {
+          "en": "To ensure void efficiency during peak hours, give all front-line staff unrestricted discount and void permissions.",
+          "zh": "为了保证高峰期的退菜效率，应该给所有前台人员开放随意打折和退菜的权限。"
+        },
+        "B": {
+          "en": "As long as the amount is within 50 yuan, anyone can freely void and discount.",
+          "zh": "只要金额在50元以内，任何人都可以随意退单和打折。"
+        },
+        "C": {
+          "en": "Discounts and voids/refunds after payment must be strictly permission-controlled; must require manager password authorization, which is an iron rule for internal fraud prevention.",
+          "zh": "打折和结账后退单、退菜都必须严格限制权限，必须由店长输入密码授权，这是内部防止贪腐的铁律。"
+        },
+        "D": {
+          "en": "Void after payment must be manager-authorized, but normal discounts can be decided by servers at any time.",
+          "zh": "结账后退菜必须由店长授权，但正常打折服务员可随时自行决定。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Both discounts and post-payment voids must require manager authorization for fraud prevention.",
+      "explanation_zh": "打折和结账后退单都必须由店长授权，这是防止内部贪腐的铁律。"
+    },
+    {
+      "id": "POS-016",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A store needs to modify a paid order from yesterday (change to credit card payment), but finds the system cannot re-open the order. How should the implementation staff handle this?",
+      "question_zh": "门店需要修改昨天已结账的订单（换成信用卡支付），但发现系统无法重新打开订单。实施人员应如何处理？",
+      "options": {
+        "A": {
+          "en": "System absolutely prohibits cross-day modification of any historical orders; can only resolve offline with cash refund.",
+          "zh": "系统默认绝对禁止跨天修改任何历史订单，只能线下退现金解决。"
+        },
+        "B": {
+          "en": "Tell the manager this is a system BUG; need to submit to R and D to restart POS server.",
+          "zh": "告知店长这是系统BUG，需要提交研发重启POS服务器。"
+        },
+        "C": {
+          "en": "In BO, modify the time limit for un-settle and void paid bills, modify the bill, then restore this parameter to 0.",
+          "zh": "在BO端修改已结账单反结账及退单的时间限制，修改完账单后再将该参数恢复为0。"
+        },
+        "D": {
+          "en": "Have the cashier randomly deduct the difference from any bill in today register to balance the account.",
+          "zh": "让收银员在今天的账单里随便找一单扣除对应的差额来平账。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Temporarily adjust the time limit parameter in BO to allow cross-day modification, then restore it.",
+      "explanation_zh": "在BO端临时修改已结账单反结账时间限制，修改完成后再恢复为0。"
+    },
+    {
+      "id": "POS-017",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When a cashier performs a full refund on a bill from a previous business day, on which day will the reversal slip be recorded?",
+      "question_zh": "收银员对一张以前营业日的账单执行了整单退款操作，这笔退款的冲销单会记录在哪一天？",
+      "options": {
+        "A": {
+          "en": "The reversal slip will be recorded on the original business day, automatically modifying previous historical reports.",
+          "zh": "冲销单会记录在原账单产生的那个营业日，自动修改之前的历史报表。"
+        },
+        "B": {
+          "en": "The system will not generate any reversal slip; will only deduct from the day reserve fund.",
+          "zh": "系统不会产生任何冲销单，只会扣除当天的备用金。"
+        },
+        "C": {
+          "en": "The reversal slip will be suspended until end-of-month manual balancing.",
+          "zh": "冲销单会被挂起，直到月底财务手工平账时才生效。"
+        },
+        "D": {
+          "en": "The reversal slip will be generated on the current business day when the refund is performed, to ensure previous business day financial data remains unchanged.",
+          "zh": "冲销单会在操作退款的当前营业日产生，以保证以前营业日的财务数据不会再发生变化。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Reversal slips for previous day refunds are recorded on the current business day to preserve historical data integrity.",
+      "explanation_zh": "以前营业日的退款冲销单会在当前营业日产生，保证历史财务数据不变。"
+    },
+    {
+      "id": "POS-018",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The restaurant is full, and 2 guests from table 1 (4-person table) agree to share with new guests. The server uses split table to create a sub-table (1 to 1). Under what condition will this sub-table automatically disappear?",
+      "question_zh": "餐厅内客满，1号桌（4人桌）的2位客人同意与新来的客人拼桌。服务员使用了拆台功能生成了子桌台（1~1）。这个子桌台在什么情况下会自动消失？",
+      "options": {
+        "A": {
+          "en": "Once new guests finish ordering, the sub-table will auto-merge back to the main table.",
+          "zh": "一旦新客人点完菜，子桌台就会自动合并回主桌台。"
+        },
+        "B": {
+          "en": "When the sub-table bill is paid (closed), the sub-table immediately disappears.",
+          "zh": "当子桌台的账单完成结账（关单）后，该子桌台立即自动消失。"
+        },
+        "C": {
+          "en": "The sub-table will never disappear automatically; must be manually deleted by manager at closing.",
+          "zh": "子桌台永远不会自动消失，必须店长在打烊时手动删除。"
+        },
+        "D": {
+          "en": "As long as the main table pays first, the sub-table will forcibly disappear due to losing main bill association.",
+          "zh": "只要主桌台先结账，子桌台就会因为失去主单关联而强行消失。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Sub-tables automatically disappear when their bill is closed/paid.",
+      "explanation_zh": "子桌台在结账完成后会自动消失。"
+    },
+    {
+      "id": "POS-019",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A server accidentally merged table 4 and table 5. Now guests request separate billing. Can the merge be directly undone?",
+      "question_zh": "服务员误将4号桌和5号桌进行了并台操作，现在客人要求分开两桌结账。此时能否直接撤销并台？",
+      "options": {
+        "A": {
+          "en": "Yes, simply long-press the table and select undo merge to restore two independent tables.",
+          "zh": "可以，直接长按桌台选择撤销并台即可恢复两张独立桌台。"
+        },
+        "B": {
+          "en": "Yes, as long as guests have not paid, clicking cancel order will auto-separate the two tables dishes.",
+          "zh": "可以，只要客人还没付款，点击取消订单系统就能自动分开两桌的菜品。"
+        },
+        "C": {
+          "en": "No, the system will directly lock both tables; must wait until EOD to use again.",
+          "zh": "不能，系统会直接锁死两张桌台，必须日结后才能再次使用。"
+        },
+        "D": {
+          "en": "No, merge operation is irreversible. Merged bills cannot be auto-split; if separate billing is needed, must manually adjust dishes or un-settle.",
+          "zh": "不能，并台操作不可逆，合并后的账单无法自动拆分，如需分开结账只能手动调整菜品或反结账。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Table merge is irreversible. Separate billing requires manual dish adjustment or un-settle operation.",
+      "explanation_zh": "并台操作不可逆，分开结账只能手动调整菜品或反结账。"
+    },
+    {
+      "id": "POS-020",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A banquet group occupies tables 1, 2, 3. The server uses linked tables to bind them. Now need to order the same 10 dishes for these 3 tables. What is the fastest operation?",
+      "question_zh": "宴会客群占用了1、2、3号桌，服务员使用了联台功能将它们绑定。现在需要给这3桌点相同的10道菜，最快捷的操作是？",
+      "options": {
+        "A": {
+          "en": "Order on table 1, then凭记忆 re-order on table 2 and table 3.",
+          "zh": "在1号桌点完后，凭借记忆去2号桌、3号桌重新各点一遍。"
+        },
+        "B": {
+          "en": "Put all dishes on table 1, then type in notes to tell kitchen to prepare 3 portions.",
+          "zh": "把所有菜点在1号桌上，然后在备注里打字告诉厨房准备3份。"
+        },
+        "C": {
+          "en": "Order on any table and click submit; when system prompts whether to order same dishes for other linked tables, click confirm to auto-sync.",
+          "zh": "对任意一桌点菜并点击下单，系统弹窗询问是否给其他联台下单相同菜品时，点击确认即可自动同步。"
+        },
+        "D": {
+          "en": "Must create a dedicated banquet set meal in the backend to one-click push to all tables.",
+          "zh": "必须在后台创建一个专用的宴会套餐，才能一键推送到所有桌台。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "When ordering on linked tables, the system prompts to sync dishes to all linked tables.",
+      "explanation_zh": "联台点单时，系统会弹窗询问是否同步下单到其他联台。"
+    },
+    {
+      "id": "POS-021",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "In the regular shift handover process, regarding abnormal unpaid orders generated during the shift, what is the core principle emphasized in the risk control guide?",
+      "question_zh": "在常规交班（班结）流程中，关于当班产生的不正常未结订单，风控指南强调的核心原则是什么？",
+      "options": {
+        "A": {
+          "en": "As long as the actual cash in the drawer matches, unpaid orders can be forcibly deleted.",
+          "zh": "只要钱箱里的实际现金数对得上，未结订单可以直接强制删除。"
+        },
+        "B": {
+          "en": "The system will auto-process all unpaid orders as zero-discount at shift handover.",
+          "zh": "系统会在班结时自动将所有未结订单按抹零打折处理掉。"
+        },
+        "C": {
+          "en": "Can freely leave dead bills (escaped or forgotten bills) from the previous shift to the evening shift.",
+          "zh": "可以随意把当班产生的逃单或忘结账死单直接遗留给下一个班次处理。"
+        },
+        "D": {
+          "en": "Strictly prohibited to leave dead bills (escaped or forgotten bills) from the previous shift to the evening shift. Whoever shift generates the bad debt is responsible for handling it.",
+          "zh": "严禁将上一班次的死单（逃单或忘结账）遗留给晚班，谁的班次产生的坏账谁负责处理。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Dead bills must be handled by the shift that generated them; cannot be passed to the next shift.",
+      "explanation_zh": "死单必须由产生该账单的班次处理，严禁遗留给下一班次。"
+    },
+    {
+      "id": "POS-022",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "To prevent cashier fraud, the store enables blind handover mode. After enabling, what situation will cashiers face during handover?",
+      "question_zh": "门店为了防止收银员对账作弊，开启了盲交班模式。开启后，收银员在交班时会面临什么情况？",
+      "options": {
+        "A": {
+          "en": "System will skip the cash drawer counting step and directly generate reports.",
+          "zh": "系统会自动跳过清点钱箱的步骤，直接生成报表，全凭自觉。"
+        },
+        "B": {
+          "en": "The expected count amount on the handover page will be hidden as asterisks, cashiers must count actual cash and blind-enter into system.",
+          "zh": "班结页面会隐藏预计盘点金额显示为******，收银员必须清点实际现金并盲录入系统。"
+        },
+        "C": {
+          "en": "The printed handover slip data will also be all asterisks; even the manager cannot see specific revenue.",
+          "zh": "交班后打印出来的交班单上的数据也会全是星号，连店长也看不见具体营收。"
+        },
+        "D": {
+          "en": "Blind handover will physically lock the drawer cash; cashiers cannot open the cash drawer.",
+          "zh": "盲交班会自动把抽屉里的零钱锁死，收银员物理上无法打开钱箱。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Blind handover hides expected amounts; cashiers must count and enter actual cash without seeing system expected values.",
+      "explanation_zh": "盲交班隐藏预计金额，收银员需清点实际现金并盲录入。"
+    },
+    {
+      "id": "POS-023",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A customer completes online ordering and payment via QR code. During handover, how should these online orders (Online) without fixed cashier attribution be merged for handover?",
+      "question_zh": "顾客通过扫码完成了线上点单并支付。在班结时，这类没有固定收银员归属的线上单（Online）应如何合并交班？",
+      "options": {
+        "A": {
+          "en": "Online orders are cloud data and do not need handover; system will auto-skip.",
+          "zh": "线上单是云端数据不需要交班，系统会自动跳过这些订单。"
+        },
+        "B": {
+          "en": "Must be handled separately by the manager using super admin account in BO backend.",
+          "zh": "必须由店长用超级管理员账号单独在BO后台处理线上单交班。"
+        },
+        "C": {
+          "en": "When clicking Start Handover, use the substitute handover feature, check the personnel with 000000|Online identifier for merged handover.",
+          "zh": "在点击【开始班结】时，通过代交班功能，勾选包含「000000｜Online」标识的人员进行合并交班。"
+        },
+        "D": {
+          "en": "Online orders will be judged as unprocessed dead bills by the system; must manually click once to complete payment.",
+          "zh": "线上单会被系统判定为未处理的死单，必须手动点击一次完成支付。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Use the substitute handover feature to merge online orders with 000000|Online identifier.",
+      "explanation_zh": "通过代交班功能勾选「000000｜Online」标识的线上单进行合并交班。"
+    },
+    {
+      "id": "POS-024",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "After handover is completed, the manager modifies a wrong bill within the shift, then uses the recalculate handover slip feature. What impact does this have on the original handover record?",
+      "question_zh": "交班完成后，店长修改了班次内的一笔错单，随后使用了重算交班单功能。该功能执行后会对原交班记录造成什么影响？",
+      "options": {
+        "A": {
+          "en": "Will completely delete the old handover slip from database; will never leave modification traces.",
+          "zh": "会彻底从数据库删除旧的交班单，绝不会留下修改痕迹。"
+        },
+        "B": {
+          "en": "The old handover slip amount will be auto-overwritten directly; no new slip record needed.",
+          "zh": "旧的交班单金额会自动直接覆盖，不需要生成任何新的单据记录。"
+        },
+        "C": {
+          "en": "The system will auto-alarm and forcibly lock the cashier POS account.",
+          "zh": "系统会自动报警，并强制锁定该收银员的POS账号。"
+        },
+        "D": {
+          "en": "The original handover slip will be logically hidden; system generates a new slip marked recalculated and records the operator and time.",
+          "zh": "原交班单会被逻辑隐藏，系统生成标记为重算的新单，并记录重算的操作人和时间。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Recalculated handover slips create a new record marked recalculated while hiding the original, maintaining audit trail.",
+      "explanation_zh": "重算交班单会生成新单并标记重算，原单逻辑隐藏，保留审计痕迹。"
+    },
+    {
+      "id": "POS-025",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "At closing, the manager performs manual EOD (End of Day). What is the risk control logic after EOD is completed?",
+      "question_zh": "晚上打烊时，店长执行了手动日结（EOD）操作。日结完成后的风控逻辑是怎样的？",
+      "options": {
+        "A": {
+          "en": "If finding the day bills are wrong, the manager can click undo EOD to return to modification state at any time.",
+          "zh": "如果发现当天的账单算错了，店长可以随时点击撤销日结退回修改状态。"
+        },
+        "B": {
+          "en": "As long as there is boss super password authorization, can cross-day modify historical bills at any time.",
+          "zh": "只要有老板的超级密码授权，随时可以跨天修改日结后的历史账单。"
+        },
+        "C": {
+          "en": "EOD is only to trigger the printer to print a sales total slip; has no locking significance for system data.",
+          "zh": "日结只是为了触发打印机打一张营业小票，对系统数据没有任何锁定意义。"
+        },
+        "D": {
+          "en": "EOD is an irreversible data firewall. Once completed, no one (including the manager) can modify any bill of that day.",
+          "zh": "日结是一道不可逆的数据防火墙。一旦完成，任何人（包括店长）都无法再修改当天的任何一笔账单。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "EOD is irreversible; no bills can be modified after completion, ensuring data integrity.",
+      "explanation_zh": "日结是不可逆的数据防火墙，完成后任何人无法修改当天账单。"
+    },
+    {
+      "id": "POS-026",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The store configures auto EOD feature. When reaching the set auto EOD time, if all conditions are met, what operations will the system automatically perform?",
+      "question_zh": "门店配置了自动日结功能。在到达设定的自动日结时间时，如果一切条件满足，系统会自动进行哪些操作？",
+      "options": {
+        "A": {
+          "en": "Auto-forcibly lock attendance for all employees who have not clocked out, and deduct wages.",
+          "zh": "自动强制锁定所有未打卡下班员工的考勤，并扣除工资。"
+        },
+        "B": {
+          "en": "System only simply prints a sales total slip; does not perform any inventory or document cleaning.",
+          "zh": "系统只会简单打印一张销售总额单，不做任何库存或单据清理。"
+        },
+        "C": {
+          "en": "Auto-execute business date +1, restore dish sold-out status, close 0-yuan orders, auto-clear tables, and upload data to cloud.",
+          "zh": "自动执行营业日期+1、恢复菜品沽清状态、关闭0元单、自动清台，并上传数据至云端。"
+        },
+        "D": {
+          "en": "Auto-carry forward all unpaid orders to the manager, requiring next-day cash payment.",
+          "zh": "自动结转当天所有未付订单到经理头上，要求次日补交现金。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Auto EOD increments business date, restores sold-out dishes, closes zero orders, clears tables, and uploads to cloud.",
+      "explanation_zh": "自动日结会执行日期+1、恢复沽清、关闭0元单、清台并上传云端。"
+    },
+    {
+      "id": "POS-027",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When conducting pre-network inspection for small casual dining store hardware, which connection method for kitchen printers is completely compliant?",
+      "question_zh": "在进行小型正餐门店的硬件前置网络检查时，对于后厨打印机（热菜、凉菜打印机）的连接方式，以下哪种做法是完全符合规范的？",
+      "options": {
+        "A": {
+          "en": "To maintain kitchen aesthetics and save wiring time, implementation staff prefer Wi-Fi to connect all kitchen printers.",
+          "zh": "为了保持后厨美观并节省走线时间，实施人员优先使用Wi-Fi来连接后厨所有打印机。"
+        },
+        "B": {
+          "en": "Cashier machine and 3 printers must all be connected via network cables, physically connected to the same router or switch.",
+          "zh": "收银机和3台打印机必须全部通过网线，物理连接在同一个路由器或交换机上。"
+        },
+        "C": {
+          "en": "Front desk printers must use network cables, but kitchen printers can use Wi-Fi as long as within 5 meters of router.",
+          "zh": "前台打印机必须连网线，但后厨打印机只要距离路由器在5米以内，就可以使用无线Wi-Fi。"
+        },
+        "D": {
+          "en": "As long as there is no microwave in the kitchen, can safely use Wi-Fi for printer connection.",
+          "zh": "只要后厨没有微波炉，就可以安全地使用Wi-Fi连接打印机。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "All POS devices including printers must be wired to the same router/switch for reliable operation.",
+      "explanation_zh": "所有POS设备包括打印机必须通过网线连接到同一路由器/交换机。"
+    },
+    {
+      "id": "POS-028",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When checking network ports, the laptop obtained IP 169.254.x.x. What does this usually indicate?",
+      "question_zh": "实施人员检查网络端口时，发现笔记本获取的IP为169.254.x.x，这通常代表？",
+      "options": {
+        "A": {
+          "en": "Indicates the port has successfully connected to the internet.",
+          "zh": "代表该端口已经成功连接到互联网。"
+        },
+        "B": {
+          "en": "Indicates the main router DHCP service is working normally.",
+          "zh": "代表主路由器的DHCP服务工作正常。"
+        },
+        "C": {
+          "en": "The network port is not connected to router or DHCP service is not enabled, cannot obtain valid intranet IP.",
+          "zh": "该网络端口未接通路由器或DHCP服务未开启，无法获取有效内网IP。"
+        },
+        "D": {
+          "en": "This is a unique static IP identifier for the cashier host.",
+          "zh": "这是收银主机特有的静态IP标识。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "169.254.x.x is an APIPA address indicating DHCP failure or no router connection.",
+      "explanation_zh": "169.254.x.x是APIPA地址，表示DHCP失败或未连接路由器。"
+    },
+    {
+      "id": "POS-029",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "If the cashier host (Windows device) fails and cannot boot, how to temporarily change area A sub-machine to temporary host?",
+      "question_zh": "如果收银主机（Windows设备）发生故障无法开机，如何将A区副机临时变更为临时主机？",
+      "options": {
+        "A": {
+          "en": "On area A device, clear app data, reopen APP and set work mode to Working in server mode.",
+          "zh": "在A区设备清除应用数据，重开APP并设置工作模式为Working in server mode。"
+        },
+        "B": {
+          "en": "Contact headquarters to apply for new activation code and reinstall all.",
+          "zh": "联系总部申请新的激活码并全体重装。"
+        },
+        "C": {
+          "en": "Directly modify area A sub-machine IP address to 192.168.0.220.",
+          "zh": "直接修改A区副机的IP地址为192.168.0.220。"
+        },
+        "D": {
+          "en": "Unplug front desk printer; receipts will auto-forward to cloud.",
+          "zh": "将前台打印机拔掉，单据会自动转发到云端。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "Clear app data on sub-machine and set work mode to Working in server mode to make it temporary host.",
+      "explanation_zh": "在副机清除应用数据并设置工作模式为Working in server mode可临时变为主机。"
+    },
+    {
+      "id": "POS-030",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding the EOD time setting in store BO, which option best matches SOP recommendations?",
+      "question_zh": "关于门店BO端的日结时间设置，下列哪项最符合SOP建议？",
+      "options": {
+        "A": {
+          "en": "Set EOD time to exactly match business end time.",
+          "zh": "将日结时间设置为与营业结束时间完全一致。"
+        },
+        "B": {
+          "en": "EOD time should be later than business end time (e.g., business ends at 21:00, EOD at 22:00).",
+          "zh": "日结时间应晚于结束营业时间（如21:00营业结束，22:00日结）。"
+        },
+        "C": {
+          "en": "For 24-hour stores, EOD time should be set during peak traffic hours.",
+          "zh": "对于24小时营业门店，日结时间应设在客流最大的时段。"
+        },
+        "D": {
+          "en": "Disable auto EOD; perform manual EOD daily.",
+          "zh": "关闭自动日结功能，由人工每天手动执行。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "EOD time should be set after business hours to ensure all orders are processed.",
+      "explanation_zh": "日结时间应晚于营业结束时间，确保所有订单处理完毕。"
+    },
+    {
+      "id": "POS-031",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When setting tip calculation rules in BO, if the store requires tip base must include tax and calculated after discount, how to check?",
+      "question_zh": "在BO端设置小费计算规则时，如果门店要求小费基数必须包含税费，且按优惠后的金额计算，应如何勾选？",
+      "options": {
+        "A": {
+          "en": "Check pre-tax calculation and pre-discount calculation.",
+          "zh": "勾选税前计算及折前计算。"
+        },
+        "B": {
+          "en": "Check post-tax calculation and post-discount calculation.",
+          "zh": "勾选税后计算及折后计算。"
+        },
+        "C": {
+          "en": "Check post-tax calculation and pre-discount calculation.",
+          "zh": "勾选税后计算及折前计算。"
+        },
+        "D": {
+          "en": "Check pre-tax calculation and post-discount calculation.",
+          "zh": "勾选税前计算及折后计算。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "To include tax and calculate after discount, check both post-tax and post-discount.",
+      "explanation_zh": "包含税费且按优惠后金额计算，需勾选税后计算和折后计算。"
+    },
+    {
+      "id": "POS-032",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the pre-authorization for tip business scenario, which key time point must the implementation consultant emphasize during training?",
+      "question_zh": "关于预授权收取小费的业务场景，实施顾问必须在培训时强调哪一个关键时间点？",
+      "options": {
+        "A": {
+          "en": "Must complete tip entry within 1 hour after guest departure.",
+          "zh": "必须在顾客离店后的 1 小时内完成小费补录。"
+        },
+        "B": {
+          "en": "Must complete tip entry before cashier shift handover.",
+          "zh": "必须在收银员交班前完成小费补录。"
+        },
+        "C": {
+          "en": "Must complete entry before the 2:00 AM auto-batch processing.",
+          "zh": "必须在凌晨 2:00 自动批处理（Auto-Batch）之前完成补录。"
+        },
+        "D": {
+          "en": "Must complete entry within 15 minutes after printing the guest receipt.",
+          "zh": "必须在顾客结账单打印后的 15 分钟内完成补录。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Tip entry must be completed before the 2:00 AM auto-batch to ensure proper processing.",
+      "explanation_zh": "小费补录必须在凌晨2:00自动批处理之前完成。"
+    },
+    {
+      "id": "POS-033",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When the cashier uses Cash payment method, to avoid misoperation causing accounting errors, which interface option should be特别注意?",
+      "question_zh": "当收银员使用【现金】方式结账时，为了避免误操作导致账务不准，应特别注意哪一个界面选项？",
+      "options": {
+        "A": {
+          "en": "Custom tip amount",
+          "zh": "自定义小费金额"
+        },
+        "B": {
+          "en": "Specify payment method enable",
+          "zh": "指定结账方式开启"
+        },
+        "C": {
+          "en": "Change as tip",
+          "zh": "找零当小费"
+        },
+        "D": {
+          "en": "No-confirm driver channel",
+          "zh": "免确认驱动渠道"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Change as tip can accidentally convert change to tip, causing accounting errors.",
+      "explanation_zh": "找零当小费可能误将找零转为小费，导致账务错误。"
+    },
+    {
+      "id": "POS-034",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "If the store hopes POS does not pop up tip selection box, but instead lets customer select on the payment terminal directly, how to configure?",
+      "question_zh": "如果门店希望POS端不弹出小费选择框，而是直接在刷卡机（支付卡机）上由顾客选择，应如何配置？",
+      "options": {
+        "A": {
+          "en": "Check payment device no-confirm channel in BO.",
+          "zh": "在BO端勾选支付设备免确认渠道。"
+        },
+        "B": {
+          "en": "Enable tip selection interface priority display on payment terminal in POS settings.",
+          "zh": "在POS设置中开启小费选择界面优先展示在支付卡机。"
+        },
+        "C": {
+          "en": "Disable specify payment method in tip management.",
+          "zh": "在小费管理中关闭指定结账方式。"
+        },
+        "D": {
+          "en": "Click reopen on the POS order center.",
+          "zh": "在POS订单中心点击重新打开。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Enable the setting to display tip selection on the payment terminal instead of POS.",
+      "explanation_zh": "在POS设置中开启小费选择界面优先展示在支付卡机。"
+    },
+    {
+      "id": "POS-035",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A server needs to share 2% of their tip income with bartenders and runners. Which system management feature does this belong to?",
+      "question_zh": "服务员需要将自己小费收入的 2% 分给调酒师和传菜员，这属于系统中的哪项管理功能？",
+      "options": {
+        "A": {
+          "en": "Pre-authorization for tip",
+          "zh": "预授权收取小费"
+        },
+        "B": {
+          "en": "Tip Pool management",
+          "zh": "小费池（Tip Pool）管理"
+        },
+        "C": {
+          "en": "Tip refund process",
+          "zh": "退小费流程"
+        },
+        "D": {
+          "en": "No-confirm driver channel settings",
+          "zh": "免确认驱动渠道设置"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Tip Pool management allows sharing tips among multiple staff members.",
+      "explanation_zh": "小费池管理支持将小费在多名员工之间分配。"
+    },
+    {
+      "id": "POS-036",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the POS system shift handover and EOD data statistics rules, which statement is correct?",
+      "question_zh": "关于POS系统班结与日结的数据统计规则，以下说法正确的是？",
+      "options": {
+        "A": {
+          "en": "To ensure order data continuity, system stats based on order creation time.",
+          "zh": "为了保证订单数据的连贯性，系统按订单的创建时间来统计当班/当日营收。"
+        },
+        "B": {
+          "en": "As long as the order prints a pre-receipt, regardless of whether payment is completed, system will forcibly include it in the shift actual revenue.",
+          "zh": "只要订单打印了预结单，无论是否完成收款，系统就会将其强制计入当班的实收营业额中。"
+        },
+        "C": {
+          "en": "Both shift handover and EOD data are strictly stats based on order payment time, avoiding cross-period missed orders.",
+          "zh": "班结与日结的数据均严格按照订单的结账时间进行统计，避免跨时段漏单。"
+        },
+        "D": {
+          "en": "Online ordering orders (Online) are not included in any employee personal shift data by default; separately accounted by backend during EOD.",
+          "zh": "线上点餐订单（Online）默认不计入任何员工个人的交班数据中，由后台在日结时单独核算。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Shift and EOD data are based on payment time, not creation time, to avoid cross-period issues.",
+      "explanation_zh": "班结与日结按订单结账时间统计，避免跨时段数据问题。"
+    },
+    {
+      "id": "POS-037",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Before performing manual EOD, regarding pre-validation rules, which description is correct?",
+      "question_zh": "在执行手动日结操作前，关于前置校验规则，以下哪项描述是正确的？",
+      "options": {
+        "A": {
+          "en": "System will auto-skip employees who have not handed over, only summarizing those who have.",
+          "zh": "系统会自动跳过未交班的员工，仅汇总已交班员工的营业数据并生成日结报告。"
+        },
+        "B": {
+          "en": "System will directly block the EOD process and prompt xx has not handed over, please handover before EOD.",
+          "zh": "系统会直接阻断日结流程，并提示xx还未交班，请交班后再日结。"
+        },
+        "C": {
+          "en": "System will popup requiring manager PIN code; after authorization can forcibly skip all handovers and EOD.",
+          "zh": "系统会弹窗要求输入店长的PIN码，授权后即可强制跳过所有人的班结直接日结。"
+        },
+        "D": {
+          "en": "System will auto-force handover for employees who have not handed over based on expected amount, no manual intervention needed.",
+          "zh": "系统会自动替未交班员工按账面预计金额进行强制自动交班，无需人工干预。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Manual EOD requires all employees to complete handover first; system will block if any are pending.",
+      "explanation_zh": "手动日结需要所有员工完成交班，系统会阻断如果有员工未交班。"
+    },
+    {
+      "id": "POS-038",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Regarding the actual effect of blind handover (hide revenue data) mode, which description matches system logic?",
+      "question_zh": "关于盲交班（隐藏营收数据）模式的实际效果，以下描述符合系统逻辑的是？",
+      "options": {
+        "A": {
+          "en": "Employees see all revenue data as ciphertext on POS, and printed handover slips will only show asterisks (*) to prevent leakage.",
+          "zh": "员工在POS界面上看到的营业数据全部为密文，且最终打印出来的交班单也只会显示星号（*）以彻底防范泄密。"
+        },
+        "B": {
+          "en": "After enabling blind handover, system will no longer provide cash counting entry, directly skipping the step of entering actual drawer amount.",
+          "zh": "开启盲交班后，系统将不再提供现金盘点入口，直接跳过输入钱箱实际金额的步骤。"
+        },
+        "C": {
+          "en": "Revenue data and expected count amount on handover page are all displayed as ciphertext, but printed paper handover slip after handover completion will show complete real data.",
+          "zh": "员工在班结页面的营业数据和预计盘点金额全部显示为密文，但交班完成后打印的纸质交班单会显示完整的真实数据。"
+        },
+        "D": {
+          "en": "In blind handover mode, as long as the cash amount entered by cashier is within 5 yuan difference from system expected amount, system will auto-adjust to balance.",
+          "zh": "盲交班模式下，只要收银员输入的现金金额与系统预计金额差额在5元以内，系统就会自动调整为账平。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Blind handover hides data on screen but prints complete data on paper slip for manager review.",
+      "explanation_zh": "盲交班在界面上隐藏数据，但打印的交班单会显示完整真实数据。"
+    },
+    {
+      "id": "POS-039",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When performing shift handover, if there are unpaid customer orders in the system, how should they be handled properly?",
+      "question_zh": "收银员在进行班结时，若系统中存在未付款的顾客订单，应如何规范处理？",
+      "options": {
+        "A": {
+          "en": "Must require dining customers to pay immediately; otherwise system absolutely does not allow shift handover.",
+          "zh": "必须要求正在用餐的顾客立即买单，否则系统绝对不允许该收银员进行班结操作。"
+        },
+        "B": {
+          "en": "Cashier can forcibly close drawer and handover; system will auto-pend unpaid orders for next shift.",
+          "zh": "收银员可以直接强制关闭钱箱交班，系统会自动将未结订单挂起并留给下一个班次。"
+        },
+        "C": {
+          "en": "Directly force close (mark as damage) these unpaid orders, re-order for customers next day.",
+          "zh": "直接将这些未结订单做强制关闭（记为报损）处理，次日再重新帮顾客点单。"
+        },
+        "D": {
+          "en": "Cashier can select carry over to next day for these unpaid orders during handover, not affecting current shift handover.",
+          "zh": "收银员可以在班结处理未结订单环节，将这些未付款订单选择转次日（Carry over），不影响当期交班。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "Unpaid orders can be carried over to next day during handover without affecting current shift.",
+      "explanation_zh": "未结订单可在班结时选择转次日，不影响当期交班。"
+    },
+    {
+      "id": "POS-040",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Encountering online ordering orders (Online) without fixed cashier attribution, how to complete handover?",
+      "question_zh": "遇到无固定收银员归属的线上点餐订单（Online），应如何完成交班操作？",
+      "options": {
+        "A": {
+          "en": "Online orders are already paid online; system will auto-complete shift handover and upload to cloud in real-time, no store staff intervention needed.",
+          "zh": "线上订单由于已经完成在线支付，系统会实时自动完成班结并上传云端，无需门店员工介入。"
+        },
+        "B": {
+          "en": "Must and can only be done by store admin (Admin) account login to separately execute handover for online orders.",
+          "zh": "必须且只能由拥有最高权限的门店管理员（Admin）账号登录，去单独对线上订单执行班结。"
+        },
+        "C": {
+          "en": "When employees perform normal handover, system will popup listing un-handover list; employees can check online orders with 000000|Online identifier for substitute handover merge processing.",
+          "zh": "员工在进行正常班结时，系统会弹窗列出未交班列表，员工可以勾选包含「000000｜Online」标识的线上单，通过代交班合并处理。"
+        },
+        "D": {
+          "en": "Online order funds do not need handover; system will record them as non-operating income during EOD.",
+          "zh": "线上订单的款项不需要交班，日结时系统会将其记录为营业外收入。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Use substitute handover feature to merge online orders with 000000|Online identifier.",
+      "explanation_zh": "通过代交班功能勾选「000000｜Online」标识的线上单进行合并交班。"
+    },
+    {
+      "id": "POS-041",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "In All You Can Eat mode, a store rules 'premium wagyu' limited to 2 per table. A table of 4 tries to order 3 wagyu, but system blocks it. Why?",
+      "question_zh": "在自助餐模式下，某门店规定'极品和牛'每桌限点 2 份。一桌 4 位客人的桌台试图点 3 份和牛，但系统提示无法加购。原因是什么？",
+      "options": {
+        "A": {
+          "en": "AYCE mode does not allow charging dishes; wagyu must be set as free.",
+          "zh": "自助餐模式下不允许点收费菜品，和牛必须设置为免费。"
+        },
+        "B": {
+          "en": "Server needs to use 'supplementary order' feature to bypass system limit.",
+          "zh": "服务员需要使用'补菜下单'功能来绕过系统限制。"
+        },
+        "C": {
+          "en": "System supports per-table/per-person limit configuration; this operation exceeds the per-table limit of 2.",
+          "zh": "系统支持按桌/按人限购配置，该操作超出了按桌限购的 2 份数量，因此被系统拦截。"
+        },
+        "D": {
+          "en": "AYCE tier setting is wrong; adult tier can only order basic dishes.",
+          "zh": "自助餐档位设置错误，成人档位只能点基础菜品。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "AYCE mode supports per-table or per-person item limits. The system blocks orders exceeding the configured limit.",
+      "explanation_zh": "自助餐模式支持按桌或按人限购，超出限制会被系统拦截。"
+    },
+    {
+      "id": "POS-042",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "In AYCE mode, a customer orders a 'combo pot' with main dish 'bullfrog' and side dishes 'potato' and 'enoki mushroom'. The vegetable station does not receive the print ticket for potato and enoki. Why?",
+      "question_zh": "在自助餐模式下,顾客点了一份'一锅焖（拼菜）'，主菜是'牛蛙'，拼菜是'土豆'和'金针菇'。后厨的蔬菜档口却没有收到土豆和金针菇的打印单，这是为什么？",
+      "options": {
+        "A": {
+          "en": "Printer network disconnected, causing partial ticket loss.",
+          "zh": "打印机网络断开，导致部分单据丢失。"
+        },
+        "B": {
+          "en": "Combo dishes print under the main dish station uniformly, not separately by station.",
+          "zh": "拼菜按主菜出单档口统一出餐，不单独分档口打印。"
+        },
+        "C": {
+          "en": "Cashier forgot to select potato and enoki and click 'start dish'.",
+          "zh": "收银员忘记选中土豆和金针菇点击'起菜'。"
+        },
+        "D": {
+          "en": "Combo dishes can only achieve station printing in fast food mode.",
+          "zh": "拼菜必须在快餐模式下才能实现分档口打印。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Combo dishes print under the main dish station; side dishes do not print separately at their own stations.",
+      "explanation_zh": "拼菜按主菜出单档口统一打印，配菜不单独分档口打印。"
+    },
+    {
+      "id": "POS-043",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The host uses 'pre-order' feature to order for waiting guests and clicks 'hold'. The guest asks for their order number. How should the host respond?",
+      "question_zh": "迎宾员在等位区使用'预点菜'功能为顾客提前点好了菜，并点击了'挂单'。顾客询问自己的订单号是多少以便查单，迎宾员此时应该怎么回答？",
+      "options": {
+        "A": {
+          "en": "Directly tell the system-generated receipt serial number.",
+          "zh": "直接告知系统生成的小票流水号。"
+        },
+        "B": {
+          "en": "Explain that pre-order is currently a saved 'pre-order' without an order number; a formal bill number will be generated after 'retrieve order' and table opening.",
+          "zh": "解释预点菜目前只是暂存的'预点单'，还没有单号，等落座'提单'开台后才会生成正式账单号。"
+        },
+        "C": {
+          "en": "Must have the customer pay first for the pre-order to generate an order number.",
+          "zh": "必须先让顾客付款，预点单才能生成订单号。"
+        },
+        "D": {
+          "en": "Switch to 'phone order' module to re-enter and get a pickup number.",
+          "zh": "切换到'电话订购'模块重新录入，才能获取取餐号。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Pre-orders do not have order numbers until they are retrieved and a table is opened.",
+      "explanation_zh": "预点菜是暂存的预点单，没有单号，提单开台后才生成正式账单号。"
+    },
+    {
+      "id": "POS-044",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "Cashiers complain that voiding items requires clicking 'more' menu every time, which is tedious. As implementation staff, how should you solve this?",
+      "question_zh": "正餐门店的收银员抱怨，每次想给客人'退菜'，都要点开'更多'菜单才能找到退菜按钮，操作太繁琐。作为实施人员，你应该如何解决？",
+      "options": {
+        "A": {
+          "en": "Tell cashiers the system interface is locked by headquarters and cannot be changed.",
+          "zh": "告知收银员系统界面是总部锁死的，无法更改，只能适应。"
+        },
+        "B": {
+          "en": "Force switch the store operation mode from dine-in to fast food to simplify the interface.",
+          "zh": "将门店的运营模式从正餐强行切换到快餐模式，简化界面。"
+        },
+        "C": {
+          "en": "On the ordering interface, click 'more' -> 'customize function buttons' to add it as a front-end shortcut button.",
+          "zh": "在点菜界面点击'更多'→'自定义功能按键'，将其添加为前端快捷按键。"
+        },
+        "D": {
+          "en": "Must submit a ticket to technical support to modify code via backend.",
+          "zh": "必须提交工单给技术支持，通过后台修改代码实现。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Customize function buttons allows adding frequently used features as shortcuts on the ordering interface.",
+      "explanation_zh": "通过自定义功能按键可将退菜添加为前端快捷按钮。"
+    },
+    {
+      "id": "POS-045",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "The cashier wants to add a 'delivery exclusive set meal' on the ordering interface, but searching the dish name shows it cannot be added and does not show 'Sold out'. What is the most likely reason?",
+      "question_zh": "收银员在点单界面想要加购一份'外卖专享套餐'，但搜索菜名后发现无法加购，且该菜品也没有显示'Sold out'（沽清）。最可能的原因是什么？",
+      "options": {
+        "A": {
+          "en": "The dish must be added by inputting PLU code to force add.",
+          "zh": "该菜品必须通过输入 PLU 编码才能强制加购。"
+        },
+        "B": {
+          "en": "The cashier currently opened table with business type 'dine-in', and delivery exclusive dishes are only allowed under 'delivery' business type.",
+          "zh": "收银员当前开台选择的业务类型是'堂食'，而外卖专属菜品仅在'外卖'业务类型下才允许加购。"
+        },
+        "C": {
+          "en": "The cashier forgot to configure flavor/practice for this dish first.",
+          "zh": "收银员忘记先给该菜品配置口味做法了。"
+        },
+        "D": {
+          "en": "This set meal belongs to AYCE tier dishes and must be added in the AYCE interface.",
+          "zh": "该套餐属于自助餐档位菜品，必须在自助餐界面加购。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Delivery exclusive dishes are only available when the business type is set to 'delivery'.",
+      "explanation_zh": "外卖专属菜品只在业务类型为'外卖'时才能加购。"
+    },
+    {
+      "id": "POS-046",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When configuring printing for multi-language receipts, after testing, all void receipts only show the default language. Which key step must be checked?",
+      "question_zh": "配置多语言打印模板后，测试发现，所有退菜小票仍只显示默认语言。以下哪项是必须检查的关键步骤？",
+      "options": {
+        "A": {
+          "en": "In POS 'system settings', change the default language to the corresponding language.",
+          "zh": "在POS的'系统设置'中，将默认语言修改为对应语言。"
+        },
+        "B": {
+          "en": "In 'void reason management', configure printers separately for each reason.",
+          "zh": "在'退菜原因管理'中，为每个原因单独配置打印机。"
+        },
+        "C": {
+          "en": "Confirm whether the print template's 'language' attribute is set to 'follow system' or specifies the corresponding language.",
+          "zh": "确认打印模板的'语言'属性是否设置为'跟随系统'或指定了对应语言。"
+        },
+        "D": {
+          "en": "Restart the store local print service to load the latest multi-language configuration.",
+          "zh": "重启门店的本地打印服务，以加载最新的多语配置。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "The print template language attribute must be set to 'follow system' or specify the target language for multi-language printing.",
+      "explanation_zh": "打印模板的语言属性需设置为'跟随系统'或指定对应语言。"
+    },
+    {
+      "id": "POS-047",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When coaching new implementation consultants on printing issue troubleshooting, which sequence best follows the 'global to local' logic and is most efficient?",
+      "question_zh": "在辅导新实施顾问时，你强调打印问题排查应有系统性顺序。当接到'所有打印都不生效'的紧急报修时，你认为下列哪种排查顺序最符合从'全局'到'局部'的逻辑，且效率最高？",
+      "options": {
+        "A": {
+          "en": "1.Check printer power and paper 2.Check POS print switch 3.Check BO rule publish status 4.Check template configuration.",
+          "zh": "1.检查打印机电源和纸张 2.检查POS端打印开关 3.检查BO规则发布状态 4.检查模板配置。"
+        },
+        "B": {
+          "en": "1.Restart local print service 2.Restart POS client 3.Re-publish print rules.",
+          "zh": "1.重启本地打印服务 2.重启POS客户端 3.重新发布打印规则。"
+        },
+        "C": {
+          "en": "1.Check network connection 2.Replace printer driver 3.Recreate print template.",
+          "zh": "1.检查网络连接 2.更换打印机驱动 3.重做打印模板。"
+        },
+        "D": {
+          "en": "1.Check BO rule publish status 2.Check template association 3.Check POS print switch and default printer 4.Check local print service log 5.Check printer hardware.",
+          "zh": "1.检查BO规则发布状态 2.检查模板是否被正确关联 3.检查POS端打印开关及默认打印机 4.检查本地打印服务日志 5.检查打印机硬件。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "The correct troubleshooting order is from cloud (BO rules) to local (printer hardware), following global to local logic.",
+      "explanation_zh": "正确的排查顺序是从云端(BO规则)到本地(打印机硬件)，遵循从全局到局部的逻辑。"
+    },
+    {
+      "id": "POS-048",
+      "module": "POS",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A dine-in table (A01) cannot perform 'pre-settle' and 'settle' operations. The order contains a 'weighing dish (steamed fish)' and a 'market price dish (wagyu)'. Both are ordered and served. What is the most likely technical reason?",
+      "question_zh": "门店反馈一个正餐桌台（A01）无法进行'预结'和'结账'操作。实施人员登录系统检查发现：订单内包含一份'清蒸龙虎斑（称重菜）'和一份'特价和牛（时价菜）'。两道菜品均已下单并出餐。请问下列哪项最有可能是导致无法结账的技术原因？",
+      "options": {
+        "A": {
+          "en": "The weighing dish is not connected to electronic scale; system cannot get weight, needs app restart.",
+          "zh": "该称重菜未接入电子秤，导致系统无法获取重量，需重启应用程序刷新。"
+        },
+        "B": {
+          "en": "The market price dish price was reset to 0 after EOD; implementation staff did not set 'long-term valid' in BO.",
+          "zh": "时价菜的价格在当天日结后被重置为 0，实施人员未在 BO 端设置'长期有效'。"
+        },
+        "C": {
+          "en": "The order contains a weighing dish without manual 'confirm weight' executed; unconfirmed weighing dishes block the settlement process.",
+          "zh": "订单中存在未手动执行'确认重量'的称重菜，未确认重量的菜品会阻塞结账流程。"
+        },
+        "D": {
+          "en": "The table is in 'opened but not ordered' state; system detects logical conflict.",
+          "zh": "该桌台处于'开台未下单'状态，系统检测到逻辑冲突。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Weighing dishes must have their weight confirmed before settlement can proceed.",
+      "explanation_zh": "称重菜必须确认重量后才能结账。"
+    },
+    {
+      "id": "POS-049",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When planning store IP addresses and printer settings, which operation has serious implementation risk?",
+      "question_zh": "在进行门店IP地址规划与打印机设置时，下列哪项操作存在严重的实施风险？",
+      "options": {
+        "A": {
+          "en": "Connect POS host (Server) with network cable and set fixed static IP (e.g., 192.168.0.220).",
+          "zh": "将POS主机（Server）连接网线，并设置固定的静态IP地址（如192.168.0.220）。"
+        },
+        "B": {
+          "en": "Due to wiring difficulty, temporarily use stable Wi-Fi printers for kitchen hot dish station.",
+          "zh": "后厨热菜档口因布线困难，暂时使用稳定的Wi-Fi打印机代替网线连接。"
+        },
+        "C": {
+          "en": "Label printers with physical tags (e.g., 'Area A-.221') corresponding to IP addresses.",
+          "zh": "在打印机机身上贴标签（如'A区-.221'），采用物理表示法对应IP地址。"
+        },
+        "D": {
+          "en": "Use dedicated setup program to change printer IP acquisition from DHCP to static.",
+          "zh": "使用专门的设置程序将打印机IP获取方式由DHCP改为静态（Static）。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Kitchen printers must use wired connection; Wi-Fi is unreliable in kitchen environments.",
+      "explanation_zh": "后厨打印机必须使用有线连接，Wi-Fi在后厨环境不可靠。"
+    },
+    {
+      "id": "POS-050",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "To achieve 'Area A sub-machine orders, auto prints from Area A printer; Area B sub-machine orders, prints from Area B printer', how to correctly configure?",
+      "question_zh": "若要实现'A区副机点单，自动由A区打印机出单；B区副机点单，由B区打印机出单'，应如何正确配置？",
+      "options": {
+        "A": {
+          "en": "Enable 'station ticket priority from zone print' parameter and set zone print rules.",
+          "zh": "开启'留台单优先从分区出单'参数，并设置分区打印规则。"
+        },
+        "B": {
+          "en": "In [POS Station Print Settings], edit each sub-station (e.g., Area A POS) to connect corresponding printer (e.g., Area A).",
+          "zh": "在【POS站点打印设置】中，为每个副站点（如A区POS）编辑连接对应的打印机（如A区）。"
+        },
+        "C": {
+          "en": "Only need to rename printer to 'Area A' in BO; system will auto-match sub-machine print by name.",
+          "zh": "只需在BO端修改打印机名称为'A区'，系统会根据名称自动匹配副机出单。"
+        },
+        "D": {
+          "en": "Set all sub-machines server mode to 'Working in server mode'.",
+          "zh": "将所有副机的服务器模式设置为工作在服务器模式（Working in server mode）。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Configure each sub-station to connect to its corresponding printer in POS Station Print Settings.",
+      "explanation_zh": "在POS站点打印设置中为每个副站点配置对应的打印机。"
+    },
+    {
+      "id": "POS-051",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Regarding POS software version management between host and sub-machines, which description is correct?",
+      "question_zh": "关于主机与副机的POS软件版本管理，下列描述正确的是？",
+      "options": {
+        "A": {
+          "en": "Sub-machine POS version (first three segments, e.g., 1.1.38) cannot be greater than host version.",
+          "zh": "副机的POS版本（前三段，如1.1.38）不能大于主机的版本。"
+        },
+        "B": {
+          "en": "For performance, sub-machines should always install the latest version from the website.",
+          "zh": "为了追求性能，副机应始终安装官网上最新的版本。"
+        },
+        "C": {
+          "en": "As long as on the same LAN, version numbers do not affect system operation at all.",
+          "zh": "只要在同一个局域网内，版本号完全不影响系统运行。"
+        },
+        "D": {
+          "en": "Sub-machine version must be exactly one minor version lower than host to serve as backup.",
+          "zh": "副机的版本必须正好比主机低一个小版本，以充当备份。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "Sub-machine version cannot exceed host version to ensure compatibility.",
+      "explanation_zh": "副机版本不能大于主机版本以确保兼容性。"
+    },
+    {
+      "id": "POS-069",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "Before official business, the store needs to clear local practice (training) data via POS system. Regarding clear data operation and password rules, which statement is correct?",
+      "question_zh": "门店在正式营业前，需要通过POS系统清除本地的练习（训练）数据。关于清除数据操作和密码规则，下列说法正确的是？",
+      "options": {
+        "A": {
+          "en": "After clicking clear on POS, BO cloud center test data will also be auto-cleared with one click; no other operation needed.",
+          "zh": "收银机端点击清除后，BO云端中心的测试数据也会被一键自动清空，无需其他操作。"
+        },
+        "B": {
+          "en": "The clear data system fixed password is always 'RESTO123'.",
+          "zh": "清除数据的系统固定密码永远为'RESTO123'。"
+        },
+        "C": {
+          "en": "The clear data password format is 'current date + Resto' (e.g., 20260313Resto), and BO center data needs separate email to R&D colleagues for processing.",
+          "zh": "清除数据的密码格式为'当前日期+Resto'（如20260313Resto），且需注意BO中心的数据需要另外给研发同事发邮件处理。"
+        },
+        "D": {
+          "en": "As long as logged in with manager account, can clear all local and cloud training data without password.",
+          "zh": "只要登录了店长账号，就可以免密直接清除所有本地和云端的训练数据。"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Clear data password is date+Resto format; BO cloud data requires separate R&D email request.",
+      "explanation_zh": "清除数据密码为日期+Resto格式，BO云端数据需另发邮件给研发处理。"
+    },
+    {
+      "id": "POS-070",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When the implementation staff establishes this small casual dining store's organization structure in RESTO backend operation center (BO center), what is the most direct standard operation path?",
+      "question_zh": "实施人员在为RESTO后台运营中心（BO中心）建立这家小型正餐门店的组织架构时，最直接的标准操作路径是？",
+      "options": {
+        "A": {
+          "en": "Must create 'Branch' first, then 'Region', then create store under region.",
+          "zh": "必须先创建'分公司'，再创建'区域'，最后才能在区域的下级新建门店。"
+        },
+        "B": {
+          "en": "Directly add store under the top-level 'Group'.",
+          "zh": "直接在最高层级的'集团'下级新增门店。"
+        },
+        "C": {
+          "en": "Store accounts and hierarchy are auto-generated; implementation staff need not manually intervene in organization structure configuration.",
+          "zh": "门店账号和层级由系统后台自动生成，实施人员无需手动干预组织架构配置。"
+        },
+        "D": {
+          "en": "Under merchant's 'Brand', directly add store.",
+          "zh": "在商户的'品牌'下级，直接新增门店。"
+        }
+      },
+      "correct_answer": "D",
+      "explanation_en": "The standard path is to add store directly under the merchant's Brand level.",
+      "explanation_zh": "标准操作路径是在商户的'品牌'下级直接新增门店。"
+    },
+    {
+      "id": "POS-071",
+      "module": "POS",
+      "difficulty": "L1",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When deploying a Windows touchscreen POS, regarding 'virtual keyboard' settings, what is the correct operation guide?",
+      "question_zh": "在部署Windows触摸屏收银机时，为了给收银员提供最佳的输入体验，关于'虚拟键盘'的设置，正确的操作指南是？",
+      "options": {
+        "A": {
+          "en": "For double insurance, must enable both POS built-in virtual keyboard and Windows OS touch keyboard.",
+          "zh": "为了双重保险，必须同时开启POS系统自带的虚拟键盘和Windows操作系统的触摸键盘。"
+        },
+        "B": {
+          "en": "In system settings, enable 'disable virtual keyboard' to disable POS built-in keyboard and use OS touch keyboard.",
+          "zh": "在系统设置中开启'禁用虚拟键盘'，即禁用POS自带的虚拟键盘，转而使用操作系统的触摸键盘。"
+        },
+        "C": {
+          "en": "Force require store to purchase external physical keyboard at own expense, as touchscreen does not support any soft keyboard.",
+          "zh": "强制要求门店自费购买外接物理键盘，因为触摸屏不支持任何软键盘。"
+        },
+        "D": {
+          "en": "Absolutely cannot use Windows OS touch keyboard; must rely on POS built-in keyboard.",
+          "zh": "绝对不能使用Windows操作系统的触摸键盘，只能依赖POS内置键盘。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Disable the POS built-in virtual keyboard and use the Windows OS touch keyboard for better input experience.",
+      "explanation_zh": "禁用POS自带虚拟键盘，使用Windows系统触摸键盘以获得更好的输入体验。"
+    },
+    {
+      "id": "POS-072",
+      "module": "POS",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "This 100sqm street casual dining restaurant has clear table service needs. When setting 'dining mode' in POS, what is the most fatal mistake implementation staff might make?",
+      "question_zh": "这家100平米的街边正餐馆有明确的桌台服务需求，实施人员在POS端设置'用餐模式'时，最容易犯的致命错误是？",
+      "options": {
+        "A": {
+          "en": "Correctly set dining mode to 'Dine-in (Table Mode)' to satisfy customer ordering and seating scenarios.",
+          "zh": "正确地将用餐模式设置为'正餐（桌台模式）'，以满足顾客点餐、落座的场景。"
+        },
+        "B": {
+          "en": "To make the cashier interface look more streamlined, arbitrarily set dining mode to 'Fast Food', causing the store to be completely unable to manage table opening and seating later.",
+          "zh": "为了让收银界面看起来更精简，擅自将用餐模式设置为'快餐'，导致门店后续根本无法管理桌台开台和落座。"
+        },
+        "C": {
+          "en": "Enable 'delayed send to kitchen' feature in general settings.",
+          "zh": "在通用设置中开启了'延迟送厨'功能。"
+        },
+        "D": {
+          "en": "Enable both 'auto print receipt' and 'auto print kitchen ticket' in general settings to improve efficiency.",
+          "zh": "在通用设置中同时开启了'自动打印结账单'和'自动打印厨房制作单'以提升效率。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Setting to Fast Food mode for a table-service restaurant will prevent table management operations.",
+      "explanation_zh": "正餐餐厅设置为快餐模式会导致无法管理桌台开台和落座。"
+    },
+    {
+      "id": "SG-001",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service",
+        "Sales"
+      ],
+      "question_en": "In Singapore, when configuring GST (Goods and Services Tax) in the BO backend, which of the following is the correct tax rate setting as of 2026?",
+      "question_zh": "在新加坡，于BO后台配置GST（消费税）时，截至2026年正确的税率设置是？",
+      "options": {
+        "A": {
+          "en": "5% (standard rate)",
+          "zh": "5%（标准税率）"
+        },
+        "B": {
+          "en": "7% (standard rate)",
+          "zh": "7%（标准税率）"
+        },
+        "C": {
+          "en": "9% (standard rate)",
+          "zh": "9%（标准税率）"
+        },
+        "D": {
+          "en": "0% (zero-rated)",
+          "zh": "0%（零税率）"
+        }
+      },
+      "correct_answer": "C",
+      "explanation_en": "Singapore GST rate increased to 9% in 2024 and remains at 9% as of 2026.",
+      "explanation_zh": "新加坡GST税率在2024年上调至9%，截至2026年保持9%。"
+    },
+    {
+      "id": "SG-002",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When a Singapore restaurant charges both GST and Service Charge, which calculation order is correct?",
+      "question_zh": "当新加坡餐厅同时收取GST和服务费时，正确的计算顺序是？",
+      "options": {
+        "A": {
+          "en": "Calculate GST first, then add Service Charge on top.",
+          "zh": "先计算GST，然后在之上加收服务费。"
+        },
+        "B": {
+          "en": "Calculate Service Charge first, then apply GST on the subtotal including service charge.",
+          "zh": "先计算服务费，然后在包含服务费的 subtotal 上应用GST。"
+        },
+        "C": {
+          "en": "GST and Service Charge are calculated independently on the original amount.",
+          "zh": "GST和服务费分别按原始金额独立计算。"
+        },
+        "D": {
+          "en": "Service Charge is included in the GST-inclusive price; no separate calculation needed.",
+          "zh": "服务费已包含在含税价格中，无需单独计算。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "In Singapore, Service Charge (typically 10%) is added first, then GST (9%) is applied on the subtotal including service charge.",
+      "explanation_zh": "在新加坡，先加服务费（通常10%），然后在含服务费的金额上计算GST（9%）。"
+    },
+    {
+      "id": "SG-003",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "For PayNow payment integration in Singapore, which configuration is required in the BO backend?",
+      "question_zh": "对于新加坡的PayNow支付集成，在BO后台需要哪项配置？",
+      "options": {
+        "A": {
+          "en": "Enable PayNow QR Code in payment method settings and link to the store's PayNow UEN.",
+          "zh": "在支付方式设置中启用PayNow二维码并链接到门店的PayNow UEN。"
+        },
+        "B": {
+          "en": "Configure a separate bank account for PayNow reconciliation.",
+          "zh": "为PayNow对账配置单独的银行账户。"
+        },
+        "C": {
+          "en": "Set PayNow as the default payment method for all orders.",
+          "zh": "将PayNow设置为所有订单的默认支付方式。"
+        },
+        "D": {
+          "en": "No configuration needed; PayNow is auto-enabled for all Singapore stores.",
+          "zh": "无需配置；PayNow对新加坡所有门店自动启用。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "PayNow requires enabling the QR code payment method and linking to the store's PayNow UEN in BO settings.",
+      "explanation_zh": "PayNow需要在BO设置中启用二维码支付方式并链接到门店的PayNow UEN。"
+    },
+    {
+      "id": "SG-004",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "A Singapore store wants to display prices as GST-inclusive on the POS but show GST separately on receipts. How should this be configured?",
+      "question_zh": "新加坡门店希望在POS上显示含税价格，但在收据上单独显示GST。应如何配置？",
+      "options": {
+        "A": {
+          "en": "Enable GST-inclusive pricing in BO and set receipt template to show tax breakdown.",
+          "zh": "在BO中启用含税定价并设置收据模板显示税项明细。"
+        },
+        "B": {
+          "en": "Configure two separate tax rates: one for display and one for receipt.",
+          "zh": "配置两个单独的税率：一个用于显示，一个用于收据。"
+        },
+        "C": {
+          "en": "This is not possible; POS display and receipt must use the same tax display method.",
+          "zh": "这不可能；POS显示和收据必须使用相同的税项显示方式。"
+        },
+        "D": {
+          "en": "Set POS to show tax-exclusive prices and manually add GST at checkout.",
+          "zh": "设置POS显示不含税价格，并在结账时手动添加GST。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "Enable GST-inclusive pricing in BO settings and configure the receipt template to show tax breakdown separately.",
+      "explanation_zh": "在BO设置中启用含税定价，并配置收据模板单独显示税项明细。"
+    },
+    {
+      "id": "SG-005",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation"
+      ],
+      "question_en": "When setting up Service Charge for a Singapore store, which of the following is a typical configuration?",
+      "question_zh": "为新加坡门店设置服务费时，以下哪项是典型配置？",
+      "options": {
+        "A": {
+          "en": "Service Charge is fixed at 5% for all order types.",
+          "zh": "服务费对所有订单类型固定为5%。"
+        },
+        "B": {
+          "en": "Service Charge is typically 10% and can be configured per order type (dine-in, takeaway, delivery).",
+          "zh": "服务费通常为10%，可按订单类型（堂食、外带、外卖）配置。"
+        },
+        "C": {
+          "en": "Service Charge is only applicable to delivery orders.",
+          "zh": "服务费仅适用于外卖订单。"
+        },
+        "D": {
+          "en": "Service Charge cannot be configured; it is auto-calculated by the system.",
+          "zh": "服务费无法配置；由系统自动计算。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Service Charge in Singapore is typically 10% and can be configured differently per order type in BO settings.",
+      "explanation_zh": "新加坡服务费通常为10%，可在BO设置中按订单类型分别配置。"
+    },
+    {
+      "id": "SG-006",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "For Malaysia SST (Sales and Service Tax) configuration, which field is specifically required for Malaysian stores?",
+      "question_zh": "对于马来西亚SST（销售和服务税）配置，马来西亚门店特别需要哪个字段？",
+      "options": {
+        "A": {
+          "en": "GST Registration Number",
+          "zh": "GST注册号码"
+        },
+        "B": {
+          "en": "Continuous Manual Tax Number (MY SST specific)",
+          "zh": "连续手动税号（MY SST专用）"
+        },
+        "C": {
+          "en": "VAT Registration Number",
+          "zh": "VAT注册号码"
+        },
+        "D": {
+          "en": "Federal Tax ID",
+          "zh": "联邦税号"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Malaysia SST requires the Continuous Manual Tax Number field, which is specific to Malaysian tax regulations.",
+      "explanation_zh": "马来西亚SST需要连续手动税号字段，这是马来西亚税制特有的。"
+    },
+    {
+      "id": "SG-007",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "When configuring the Ocean server for Singapore/Malaysia stores, which download option should be selected?",
+      "question_zh": "为新加坡/马来西亚门店配置Ocean服务器时，应选择哪个下载选项？",
+      "options": {
+        "A": {
+          "en": "US-East Server",
+          "zh": "美国东部服务器"
+        },
+        "B": {
+          "en": "Ocean - Asia+Australia",
+          "zh": "Ocean - Asia+Australia"
+        },
+        "C": {
+          "en": "China Mainland Server",
+          "zh": "中国大陆服务器"
+        },
+        "D": {
+          "en": "Europe Server",
+          "zh": "欧洲服务器"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Singapore and Malaysia stores should select Ocean - Asia+Australia server for optimal performance.",
+      "explanation_zh": "新加坡和马来西亚门店应选择Ocean - Asia+Australia服务器以获得最佳性能。"
+    },
+    {
+      "id": "SG-008",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "For Singapore H5 online ordering, which address format is supported as of the latest update?",
+      "question_zh": "对于新加坡H5在线点餐，最新更新支持哪种地址格式？",
+      "options": {
+        "A": {
+          "en": "Two-line address format only",
+          "zh": "仅支持两行地址格式"
+        },
+        "B": {
+          "en": "One-line name format (Singapore/Hong Kong/China/Taiwan)",
+          "zh": "一段式姓名格式（新加坡/香港/中国/台湾）"
+        },
+        "C": {
+          "en": "Postal code only, no street address required",
+          "zh": "仅需邮政编码，无需街道地址"
+        },
+        "D": {
+          "en": "Traditional Chinese address format",
+          "zh": "繁体中文地址格式"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Singapore H5 supports one-line name format for addresses, aligned with local conventions.",
+      "explanation_zh": "新加坡H5支持一段式姓名地址格式，符合当地惯例。"
+    },
+    {
+      "id": "SG-009",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When processing a refund for a Singapore order that was paid via PayNow, what is the correct procedure?",
+      "question_zh": "处理通过PayNow支付的新加坡订单退款时，正确的流程是？",
+      "options": {
+        "A": {
+          "en": "Refund is processed automatically to the original PayNow account within 24 hours.",
+          "zh": "退款在24小时内自动处理到原PayNow账户。"
+        },
+        "B": {
+          "en": "Refund must be manually initiated through the PayNow merchant portal.",
+          "zh": "退款必须通过PayNow商户门户手动发起。"
+        },
+        "C": {
+          "en": "Refund can only be issued as store credit, not cash refund.",
+          "zh": "退款只能以门店积分形式发放，不能现金退款。"
+        },
+        "D": {
+          "en": "Refund is not supported for PayNow transactions; customer must contact bank.",
+          "zh": "PayNow交易不支持退款；客户必须联系银行。"
+        }
+      },
+      "correct_answer": "A",
+      "explanation_en": "PayNow refunds are automatically processed back to the original payment account within 24 hours.",
+      "explanation_zh": "PayNow退款会在24小时内自动处理回原支付账户。"
+    },
+    {
+      "id": "SG-010",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "Which of the following payment methods is specifically supported for Singapore stores but not available in other regions?",
+      "question_zh": "以下哪种支付方式是新加坡门店特有支持，其他地区不可用的？",
+      "options": {
+        "A": {
+          "en": "Visa/Mastercard credit card",
+          "zh": "Visa/Mastercard信用卡"
+        },
+        "B": {
+          "en": "PayNow (Singapore)",
+          "zh": "PayNow（新加坡）"
+        },
+        "C": {
+          "en": "Alipay",
+          "zh": "支付宝"
+        },
+        "D": {
+          "en": "GrabPay",
+          "zh": "GrabPay"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "PayNow is a Singapore-specific payment method integrated into RestoSuite for local stores.",
+      "explanation_zh": "PayNow是新加坡特有的支付方式，已集成到RestoSuite供本地门店使用。"
+    },
+    {
+      "id": "SG-011",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "For a Singapore store with both dine-in and takeaway orders, how should GST be configured if takeaway is zero-rated?",
+      "question_zh": "对于同时有堂食和外卖订单的新加坡门店，如果外卖是零税率，应如何配置GST？",
+      "options": {
+        "A": {
+          "en": "Apply 9% GST to all orders regardless of type.",
+          "zh": "对所有订单应用9% GST，无论类型。"
+        },
+        "B": {
+          "en": "Configure separate GST rules: 9% for dine-in, 0% for takeaway.",
+          "zh": "配置单独的GST规则：堂食9%，外卖0%。"
+        },
+        "C": {
+          "en": "Disable GST for the entire store.",
+          "zh": "为整个门店禁用GST。"
+        },
+        "D": {
+          "en": "Apply GST only to orders above SGD 100.",
+          "zh": "仅对超过100新元的订单应用GST。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Singapore allows different GST rates for different order types; configure separately in BO settings.",
+      "explanation_zh": "新加坡允许不同订单类型适用不同GST税率；在BO设置中分别配置。"
+    },
+    {
+      "id": "SG-012",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When printing receipts for Singapore stores, which tax information must be displayed by law?",
+      "question_zh": "为新加坡门店打印收据时，法律规定必须显示哪些税项信息？",
+      "options": {
+        "A": {
+          "en": "Only the total amount including tax.",
+          "zh": "仅显示含税总金额。"
+        },
+        "B": {
+          "en": "GST Registration Number and tax amount breakdown.",
+          "zh": "GST注册号码和税项明细。"
+        },
+        "C": {
+          "en": "Service Charge percentage only.",
+          "zh": "仅显示服务费百分比。"
+        },
+        "D": {
+          "en": "No tax information required on receipts.",
+          "zh": "收据上无需显示税项信息。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "Singapore law requires receipts to display GST Registration Number and tax amount breakdown.",
+      "explanation_zh": "新加坡法律规定收据必须显示GST注册号码和税项明细。"
+    },
+    {
+      "id": "SG-013",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Sales"
+      ],
+      "question_en": "A Singapore customer wants to split payment between PayNow and credit card. Does RestoSuite support this?",
+      "question_zh": "新加坡客户希望在PayNow和信用卡之间拆分支付。RestoSuite是否支持？",
+      "options": {
+        "A": {
+          "en": "No, only one payment method per order is allowed.",
+          "zh": "不支持，每笔订单只允许一种支付方式。"
+        },
+        "B": {
+          "en": "Yes, split payment is supported across multiple payment methods including PayNow.",
+          "zh": "支持，支持跨多种支付方式（包括PayNow）的拆分支付。"
+        },
+        "C": {
+          "en": "Only if the total amount is below SGD 50.",
+          "zh": "仅当总金额低于50新元时支持。"
+        },
+        "D": {
+          "en": "Split payment is only available for membership accounts.",
+          "zh": "拆分支付仅适用于会员账户。"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "RestoSuite supports split payment across multiple payment methods, including PayNow and credit cards.",
+      "explanation_zh": "RestoSuite支持跨多种支付方式（包括PayNow和信用卡）的拆分支付。"
+    },
+    {
+      "id": "SG-014",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L2",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "For Malaysia stores, which language support was added in the February 2026 update?",
+      "question_zh": "对于马来西亚门店，2026年2月更新中添加了哪种语言支持？",
+      "options": {
+        "A": {
+          "en": "Bahasa Malaysia only",
+          "zh": "仅马来语"
+        },
+        "B": {
+          "en": "Khmer, Thai, Lao, Burmese, Microsoft YaHei Light (5 fonts)",
+          "zh": "高棉语、泰语、老挝语、缅甸语、微软雅黑Light（共5个字体）"
+        },
+        "C": {
+          "en": "Traditional Chinese only",
+          "zh": "仅繁体中文"
+        },
+        "D": {
+          "en": "Japanese and Korean",
+          "zh": "日语和韩语"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The February 2026 update added 5 fonts including Khmer, Thai, Lao, Burmese, and Microsoft YaHei Light for multi-language support.",
+      "explanation_zh": "2026年2月更新添加了5种字体，包括高棉语、泰语、老挝语、缅甸语和微软雅黑Light，用于多语言支持。"
+    },
+    {
+      "id": "SG-015",
+      "module": "Singapore/Malaysia Localization",
+      "difficulty": "L3",
+      "target_role": [
+        "Implementation",
+        "Customer Service"
+      ],
+      "question_en": "When configuring Adyen payment for Singapore stores, which feature was added in the December 2025 update?",
+      "question_zh": "为新加坡门店配置Adyen支付时，2025年12月更新中添加了哪项功能？",
+      "options": {
+        "A": {
+          "en": "Cash find change and change to tip",
+          "zh": "现金找零及找零转小费"
+        },
+        "B": {
+          "en": "Member stored value supports Adyen card tap/swipe payment",
+          "zh": "会员储值支持Adyen刷卡/感应支付"
+        },
+        "C": {
+          "en": "Automatic currency conversion",
+          "zh": "自动货币转换"
+        },
+        "D": {
+          "en": "QR code payment integration",
+          "zh": "二维码支付集成"
+        }
+      },
+      "correct_answer": "B",
+      "explanation_en": "The December 2025 update added Adyen card tap/swipe payment support for member stored value.",
+      "explanation_zh": "2025年12月更新添加了会员储值支持Adyen刷卡/感应支付功能。"
+    }
+  ]
+}

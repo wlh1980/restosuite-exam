@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  exam:
+    build: .
+    container_name: restosuite-exam
+    ports:
+      - "8500:8500"
+    volumes:
+      - ./exam.db:/app/exam.db
+      - /root/.hermes/profiles/benedict/cache/question_bank_final_v2.json:/app/question_bank_final_v2.json:ro
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Singapore
