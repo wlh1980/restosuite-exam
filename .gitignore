@@ -9,6 +9,7 @@ __pycache__/
 
 # Backups
 *.bak
+*.bak.*
 
 # Environment
 .env
