@@ -43,6 +43,8 @@ python3 /root/restosuite-exam/generate_url.py \
 ### Option 1: Direct Python (Current)
 ```bash
 cd /root/restosuite-exam
+export RESTOSUITE_EXAM_ADMIN_PASSWORD='change-me'
+export RESTOSUITE_EXAM_SESSION_SECRET='use-a-long-random-secret'
 python3 -m uvicorn main:app --host 0.0.0.0 --port 8500
 ```
 
@@ -83,6 +85,19 @@ sudo nginx -t && sudo systemctl reload nginx
 - `X-Robots-Tag: noindex, nofollow` on all responses
 - `robots.txt` blocks all crawlers
 - No search engine indexing
+- Admin credentials can be configured with `RESTOSUITE_EXAM_ADMIN_USER` and `RESTOSUITE_EXAM_ADMIN_PASSWORD`
+- Admin login uses an HttpOnly session cookie instead of placing credentials in the URL
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `RESTOSUITE_EXAM_DB` | SQLite database path | `./exam.db` |
+| `RESTOSUITE_QUESTION_BANK` | Question bank JSON path | `./question_bank_final_v2.json` |
+| `RESTOSUITE_EXAM_ADMIN_USER` | Admin dashboard username | `admin` |
+| `RESTOSUITE_EXAM_ADMIN_PASSWORD` | Admin dashboard password | `Resto2026!` |
+| `RESTOSUITE_EXAM_SESSION_SECRET` | Secret used to sign admin session cookies | admin password |
+| `RESTOSUITE_EXAM_BASE_URL` | Base URL used by `generate_url.py` | `http://localhost:8500` |
 
 ## File Structure
 ```

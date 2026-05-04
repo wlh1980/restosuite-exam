@@ -8,12 +8,13 @@ Run as a cron job on the 1st and 15th of each month.
 import sqlite3, json, os, requests
 from datetime import datetime
 
-DB_PATH = "/root/restosuite-exam/exam.db"
-AGENTMAIL_INBOX = "Restosuite_Benedict@agentmail.to"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.getenv("RESTOSUITE_EXAM_DB", os.path.join(BASE_DIR, "exam.db"))
+AGENTMAIL_INBOX = os.getenv("AGENTMAIL_INBOX", "Restosuite_Benedict@agentmail.to")
 
 def load_api_key():
     """Load AgentMail API key from .env"""
-    env_path = "/root/.hermes/profiles/benedict/.env"
+    env_path = os.getenv("AGENTMAIL_ENV_PATH", "/root/.hermes/profiles/benedict/.env")
     if not os.path.exists(env_path):
         return ""
     with open(env_path) as f:

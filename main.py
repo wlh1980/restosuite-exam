@@ -15,8 +15,9 @@ from typing import Optional
 from collections import defaultdict
 
 app = FastAPI(title="RestoSuite Exam System")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 jinja_env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader("/root/restosuite-exam/templates"),
+    loader=jinja2.FileSystemLoader(os.path.join(BASE_DIR, "templates")),
     autoescape=jinja2.select_autoescape(['html', 'xml'])
 )
 
@@ -25,8 +26,11 @@ def render_template(name, **context):
     return HTMLResponse(content=template.render(**context))
 
 # Database setup
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "exam.db")
-QUESTION_BANK_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "question_bank_final_v2.json")
+DB_PATH = os.getenv("RESTOSUITE_EXAM_DB", os.path.join(BASE_DIR, "exam.db"))
+QUESTION_BANK_PATH = os.getenv(
+    "RESTOSUITE_QUESTION_BANK",
+    os.path.join(BASE_DIR, "question_bank_final_v2.json")
+)
 
 MONTHLY_ATTEMPT_LIMIT = 2  # Max exams per candidate per month
 
@@ -43,8 +47,10 @@ DEPARTMENT_LABELS = {
 }
 
 # Admin credentials for dashboard
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "Resto2026!"
+ADMIN_USERNAME = os.getenv("RESTOSUITE_EXAM_ADMIN_USER", "admin")
+ADMIN_PASSWORD = os.getenv("RESTOSUITE_EXAM_ADMIN_PASSWORD", "Resto2026!")
+ADMIN_SESSION_SECRET = os.getenv("RESTOSUITE_EXAM_SESSION_SECRET", ADMIN_PASSWORD)
+ADMIN_SESSION_COOKIE = "rs_exam_admin"
 security = HTTPBasic(auto_error=False)
 
 def get_db():
@@ -289,6 +295,32 @@ def verify_admin(credentials: HTTPBasicCredentials):
     user_ok = secrets.compare_digest(credentials.username, ADMIN_USERNAME)
     pass_ok = secrets.compare_digest(credentials.password, ADMIN_PASSWORD)
     return user_ok and pass_ok
+
+def _admin_signature(username: str, expires_at: str) -> str:
+    payload = f"{username}|{expires_at}|{ADMIN_SESSION_SECRET}"
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+def create_admin_session_value(username: str) -> str:
+    expires_at = (datetime.utcnow() + timedelta(hours=12)).isoformat()
+    signature = _admin_signature(username, expires_at)
+    return f"{username}|{expires_at}|{signature}"
+
+def verify_admin_cookie(request: Request) -> bool:
+    raw = request.cookies.get(ADMIN_SESSION_COOKIE, "")
+    try:
+        username, expires_at, signature = raw.split("|", 2)
+        if datetime.utcnow() > datetime.fromisoformat(expires_at):
+            return False
+        expected = _admin_signature(username, expires_at)
+        return (
+            secrets.compare_digest(username, ADMIN_USERNAME) and
+            secrets.compare_digest(signature, expected)
+        )
+    except Exception:
+        return False
+
+def verify_admin_request(request: Request, credentials: Optional[HTTPBasicCredentials]) -> bool:
+    return verify_admin(credentials) or verify_admin_cookie(request)
 
 def _create_exam_session(candidate_name: str, module: str, difficulty: str,
                           num_questions: int, duration_minutes: int, pass_rate: float,
@@ -619,19 +651,8 @@ async def result_page(token: str):
 
 @app.get("/admin/results", response_class=HTMLResponse)
 async def admin_results(request: Request, credentials: HTTPBasicCredentials = Depends(security)):
-    # Accept credentials from query params (for login form) or HTTP Basic Auth header
-    query_user = request.query_params.get("username", "")
-    query_pass = request.query_params.get("password", "")
-    
-    auth_ok = verify_admin(credentials)
-    if not auth_ok and query_user and query_pass:
-        auth_ok = (
-            secrets.compare_digest(query_user, ADMIN_USERNAME) and
-            secrets.compare_digest(query_pass, ADMIN_PASSWORD)
-        )
-    
-    if not auth_ok:
-        auth_error = credentials is not None or (query_user and query_pass)
+    if not verify_admin_request(request, credentials):
+        auth_error = credentials is not None
         response = render_template("admin.html", login_required=True, auth_error=auth_error)
         response.headers["X-Robots-Tag"] = "noindex, nofollow"
         response.status_code = 401
@@ -692,10 +713,16 @@ async def admin_login(request: Request):
     pwd = form.get("password", "").strip()
     if (secrets.compare_digest(user, ADMIN_USERNAME) and
         secrets.compare_digest(pwd, ADMIN_PASSWORD)):
-        return RedirectResponse(
-            url=f"/training/admin/results?username={user}&password={pwd}",
-            status_code=303
+        response = RedirectResponse(url="/training/admin/results", status_code=303)
+        response.set_cookie(
+            ADMIN_SESSION_COOKIE,
+            create_admin_session_value(user),
+            max_age=12 * 60 * 60,
+            httponly=True,
+            secure=request.url.scheme == "https",
+            samesite="lax",
         )
+        return response
     response = render_template("admin.html", login_required=True, auth_error=True)
     response.headers["X-Robots-Tag"] = "noindex, nofollow"
     return response

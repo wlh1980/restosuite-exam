@@ -14,9 +14,10 @@ Options:
 import urllib.request
 import urllib.parse
 import json
+import os
 import sys
 
-BASE_URL = "http://localhost:8500"
+BASE_URL = os.getenv("RESTOSUITE_EXAM_BASE_URL", "http://localhost:8500").rstrip("/")
 
 def generate_exam_url(module="all", difficulty="all", num_questions=20, duration_minutes=30, pass_rate=80.0):
     params = urllib.parse.urlencode({

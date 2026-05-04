@@ -8,7 +8,11 @@ services:
       - "8500:8500"
     volumes:
       - ./exam.db:/app/exam.db
-      - /root/.hermes/profiles/benedict/cache/question_bank_final_v2.json:/app/question_bank_final_v2.json:ro
     restart: unless-stopped
     environment:
       - TZ=Asia/Singapore
+      - RESTOSUITE_EXAM_DB=/app/exam.db
+      - RESTOSUITE_QUESTION_BANK=/app/question_bank_final_v2.json
+      - RESTOSUITE_EXAM_ADMIN_USER=${RESTOSUITE_EXAM_ADMIN_USER:-admin}
+      - RESTOSUITE_EXAM_ADMIN_PASSWORD=${RESTOSUITE_EXAM_ADMIN_PASSWORD:-Resto2026!}
+      - RESTOSUITE_EXAM_SESSION_SECRET=${RESTOSUITE_EXAM_SESSION_SECRET:-change-this-secret}
