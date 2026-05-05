@@ -18,10 +18,58 @@
         .lang-zh { display: none; }
         body.zh-active .lang-zh { display: block; }
         body.zh-active .lang-en { display: none; }
+        .lang-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(14, 165, 233, 0.08));
+            color: #bfdbfe;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 10px 28px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+            transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+        }
+        .lang-toggle:hover {
+            transform: translateY(-1px);
+            border-color: rgba(147, 197, 253, 0.75);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.28), rgba(14, 165, 233, 0.16));
+            color: #ffffff;
+        }
+        .lang-toggle svg { width: 15px; height: 15px; flex-shrink: 0; }
+        .lang-toggle .lang-en { display: inline; }
+        .lang-toggle .lang-zh { display: none; }
+        body.zh-active .lang-toggle .lang-en { display: none; }
+        body.zh-active .lang-toggle .lang-zh { display: inline; }
+        @media (max-width: 420px) {
+            .lang-toggle {
+                top: 14px;
+                right: 14px;
+                padding: 7px 10px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
-    <div class="card rounded-xl p-8 max-w-md w-full">
+    <div class="card rounded-xl p-8 pt-16 max-w-md w-full relative">
+        <button type="button" onclick="toggleLang()" class="lang-toggle" aria-label="Switch language">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20"></path>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+            </svg>
+            <span class="lang-en">中文</span>
+            <span class="lang-zh">English</span>
+        </button>
+
         <div class="text-center mb-6">
             <h1 class="text-2xl font-bold mb-1 text-blue-400">RestoSuite</h1>
             <p class="text-gray-400 text-sm">
@@ -120,10 +168,6 @@
                 <span class="lang-zh">开始正式考试 →</span>
             </button>
         </form>
-
-        <div class="mt-6 text-center">
-            <button onclick="toggleLang()" class="text-xs text-blue-400 hover:text-blue-300">中文 / English</button>
-        </div>
 
         <div class="mt-4 text-center text-xs text-gray-600">
             RestoSuite © 2026 | Product Training System
